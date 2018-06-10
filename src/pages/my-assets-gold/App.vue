@@ -1,0 +1,237 @@
+<template>
+  <div class="my-assets-diamond">
+    <div class="my-assets-diamond__banner">
+      <h5>点石金<span>（可用于购物）</span></h5>
+      <p>{{enabledCredit}}</p>
+    </div>
+    <div class="my-assets-diamond__head">收支明细</div>
+    <ul
+      class="my-assets-diamond__list"
+      v-waterfall-lower="fetchDiamonds"
+      :waterfall-disabled="waterfallDisabled"
+      waterfall-offset="50"
+    >
+      <li v-for="assets in getParseHistory">
+        <span>{{assets.createTime}}</span>
+        <van-cell-group>
+          <van-cell v-for="item in assets.list">
+            <dl>
+              <dt>{{item.flowRemark}}</dt>
+              <dd>{{item.createTime.split(' ')[1]}}</dd>
+            </dl>
+            <span :class="['my-assets-diamond__money', { 'active': item.flowAmount }]">{{ +item.flowAmount > 0 ? '+' : '' }} {{item.flowAmount}}</span>
+          </van-cell>
+        </van-cell-group>
+      </li>
+    </ul>
+    <!-- 空列表 -->
+    <div class="my-assets-diamond__list-empty" v-if="isEmptyList">
+      <span class="my-assets-diamond__list-empty-text">暂无信息</span>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { Cell, CellGroup, Waterfall } from 'vant';
+  import filter from 'lodash/filter';
+  import { getGoldRule, getDiamonds } from './api';
+
+  function parseHistory(history) {
+    let result = [];
+    let filterDate = [];
+    /*
+      [{createTime: '2018-01-20', list: [...]}]
+    */
+    history.forEach(item => {
+      let { createTime } = item;
+      let index = filterDate.indexOf(createTime.split(' ')[0]);
+      if (index === -1) {
+        // 不存在的
+        filterDate.push(createTime.split(' ')[0]);
+      }
+    });
+    filterDate.forEach(item => {
+      let timeArr = filter(history, data => {
+        let { createTime } = data;
+        return item === createTime.split(' ')[0];
+      });
+      result.push({
+        createTime: item,
+        list: timeArr
+      })
+    });
+    return result;
+  }
+
+  export default {
+    name: 'assets-diamond',
+    directives: {
+      WaterfallLower: Waterfall('lower')
+    },
+    components: {
+      'van-cell-group': CellGroup,
+      'van-cell': Cell
+    },
+
+    data() {
+      return {
+        totalCredit: 0,
+        enabledCredit: 0,
+        status: 'empty',
+        isEmptyList: false,
+        history: [],
+        page: 1
+      };
+    },
+
+    created() {
+      getGoldRule().then((data) => {
+        const { success, totalCredit, enabledCredit } = data;
+        if (success) {
+          this.totalCredit = totalCredit;
+          this.enabledCredit = enabledCredit;
+        }
+      });
+    },
+
+    computed: {
+      waterfallDisabled() {
+        return this.status === 'finished' || this.status === 'loading';
+      },
+      getParseHistory() {
+        return parseHistory(this.history);
+      }
+    },
+
+    methods: {
+      fetchDiamonds() {
+        console.log('trigger');
+        if (this.status === 'loading' || this.status === 'finished' || this.waterfallDisabled) {
+          return;
+        }
+        this.status = 'loading';
+
+        getDiamonds({
+          url: '/api/asset/credit/history',
+          page: this.page
+        }).then(data => {
+          const { isLastPage, history, totalCount } = data;
+          !totalCount ? this.isEmptyList = true : this.isEmptyList = false;
+          if (!isLastPage) {
+            this.status = '';
+            this.page++;
+          } else {
+            this.status = 'finished'
+          }
+          if (history && history.length) {
+            this.history = this.history.concat(history);
+          }
+        });
+      }
+    }
+
+  };
+</script>
+
+<style lang="postcss">
+body {
+  background-color: #f7f7f7;
+}
+.my-assets-diamond {
+  &__banner {
+    box-sizing: border-box;
+    height: 100px;
+    padding: 16px 24px 12px 24px;
+    background-image: url('./images/yellow.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: left;
+    h5 {
+      margin-bottom: 6px;
+      line-height: 24px;
+      font-size: 17px;
+      span {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    p {
+      font-size: 30px;
+      line-height: 42px;
+    }
+  }
+  &__head {
+    line-height: 24px;
+    padding: 12px;
+    position: relative;
+    background-color: #fff;
+    &:before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      background: #FF9122;
+      position: absolute;
+      top: 14px;
+      left: 0;
+    }
+  }
+  &__list {
+    li {
+      > span {
+        font-size: 14px;
+        color: #333333;
+        line-height: 20px;
+        padding: 1px 12px;
+      }
+    }
+    .van-cell {
+      padding: 10px 12px 7px 12px;
+      &:not(:last-child)::after {
+        left: 0;
+      }
+    }
+    .van-cell__value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    dl, dd {
+      margin: 0;
+    }
+    dt {
+      line-height: 24px;
+      font-size: 17px;
+      color: #333333;
+    }
+    dd {
+      line-height: 20px;
+      color: #999999;
+      font-size: 14px;
+    }
+  }
+  &__list-empty {
+    position: relative;
+    text-align: center;
+    line-height: 156px;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      top: 156px;
+      height: 1px;
+      background: #CCC;
+    }
+  }
+  &__list-empty-text {
+    position: relative;
+    z-index: 1;
+    background: #f8f8f8;
+    padding: 0 10px;
+    color: #999;
+  }
+}
+</style>

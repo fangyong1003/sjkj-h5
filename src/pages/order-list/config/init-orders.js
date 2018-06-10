@@ -1,0 +1,31 @@
+export default [{
+  type: 'all',
+  list: [],
+  page: 1,
+  loading: false,
+  finished: false
+}, {
+  type: 'topay',
+  list: [],
+  page: 1,
+  loading: false,
+  finished: false
+}, {
+  type: 'tosend',
+  list: [],
+  page: 1,
+  loading: false,
+  finished: false
+}, {
+  type: 'toaccept',
+  list: [],
+  page: 1,
+  loading: false,
+  finished: false
+}, {
+  type: 'complete',
+  list: [],
+  page: 1,
+  loading: false,
+  finished: false
+}];
