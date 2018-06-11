@@ -58,7 +58,7 @@ body {
   left: 0;
   right: 0;
   padding: 10px 52px;
-  background-image: linear-gradient(-176deg, #F0019E 0%, #FE0533 100%);
+  background:#372C2A;
   color: #fff;
   z-index: 10;
 

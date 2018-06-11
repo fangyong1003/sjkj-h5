@@ -1,10 +1,9 @@
 <template>
   <div class="pay-way">
     <template v-if="payData.type == 0">
-      <div class="pay-way__item van-hairline--bottom" @click="handleAliPay">
-        <img class="pay-way__icon" src="./images/alipay.png">
-        <span>支付宝</span>
-        <van-icon name="arrow" class="pay-way__arrow" />
+      <div class="pay-way__timer">
+            <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
+            <div class="payMoney">￥{{payData.needBalanceString}}</div>
       </div>
       <div class="pay-way__item van-hairline--bottom" @click="handleWeixinPay">
         <img class="pay-way__icon" src="./images/wepay.png">
@@ -25,14 +24,13 @@
       </div>
     </template>
     <template v-if="payData.type == 1">
+      <div class="pay-way__timer">
+            <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
+            <div class="payMoney">￥{{payData.needCashString}}</div>
+      </div>
       <div class="pay-way__text">
         <p>您此次消费需要扣除点石金{{ payData.needCreditsString }}</p>
         <p>还需支付现金 <span>￥{{ payData.needCashString }}</span></p>
-      </div>
-      <div class="pay-way__item van-hairline--bottom" @click="handleAliPay">
-        <img class="pay-way__icon" src="./images/alipay.png">
-        <span>支付宝</span>
-        <van-icon name="arrow" class="pay-way__arrow" />
       </div>
       <div class="pay-way__item van-hairline--bottom" @click="handleWeixinPay">
         <img class="pay-way__icon" src="./images/wepay.png">
@@ -41,6 +39,10 @@
       </div>
     </template>
     <template v-if="payData.type == 6">
+      <div class="pay-way__timer">
+            <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
+            <div class="payMoney">￥{{payData.needBalanceString}}</div>
+      </div>
       <div class="pay-way__text">
         <p>您此次消费需要扣除点石金{{ payData.needCreditsString }}</p>
         <p>还需支付余额 <span>￥{{ payData.needBalanceString }}</span></p>
@@ -52,19 +54,6 @@
         <van-icon name="arrow" class="pay-way__arrow" />
       </div>
     </template>
-    <!-- <div class="pay-way__item van-hairline--bottom" @click="handleDianshiPay">
-      <img class="pay-way__icon" src="./images/dianshi.png">
-      <span>点石金支付</span>
-      <span class="pay-way__remain">（您有{{ payData.leftCreditString }}点石金可用）</span>
-      <van-icon name="arrow" class="pay-way__arrow" />
-    </div>
-    <div class="pay-way__item van-hairline--bottom" @click="handleJiuzhouPay">
-      <img class="pay-way__icon" src="./images/jiuzhou.png">
-      <span>九州宝支付</span>
-      <span class="pay-way__remain">（您有{{ payData.leftPropertyString }}九州宝可用）</span>
-      <van-icon name="arrow" class="pay-way__arrow" />
-    </div> -->
-
   </div>
 </template>
 
@@ -87,7 +76,9 @@ export default {
 
   data() {
     return {
-      ids: ''
+      ids: '',
+      countdown: this.payData.expiredSeconds,
+      countdownText: '00:00'
     };
   },
 
@@ -137,12 +128,35 @@ export default {
       const confirmationMessage = '确定要取消支付吗？';
       e.returnValue = confirmationMessage;
       return confirmationMessage;
+    },
+    getCountdown() {
+      if (this.countdown === 0) {
+        this.countdownText = this.getCountdownText(0);
+        return;
+      } else {
+        this.countdownText = this.getCountdownText(this.countdown);
+        this.countdown -= 1;
+      }
+
+      setTimeout(this.getCountdown, 1000);
+    },
+
+    getCountdownText(time) {
+      const seconds = time % 60;
+      const minutes = Math.floor(time / 60);
+      return this.pad(minutes) + ':' + this.pad(seconds);
+    },
+
+    pad: function pad(number) {
+      return number < 10 ? '0' + number : '' + number;
     }
   },
 
   created() {
     this.ids = Args.get('orderIds');
-
+    if (this.countdown) {
+      this.getCountdown();
+    }
     window.addEventListener('beforeunload', this.unloadFunc);
   }
 };
@@ -166,6 +180,23 @@ body {
       color: #f00;
     }
   }
+
+  &__timer{
+    padding:20px 0px;
+    text-align:center;
+    background:#fff;
+    margin-bottom:10px;
+    line-height:35px;
+    .remainTimer{
+      font-size:14px;
+      color:#7c7c7c;
+    }
+    .payMoney{
+      font-size:25px;
+      color:#383838;
+    }
+  }
+
   &__item {
     position: relative;
     padding: 12px;
