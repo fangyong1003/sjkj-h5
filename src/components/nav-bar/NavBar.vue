@@ -5,6 +5,7 @@
       :href="nav.url"
       :class="['nav-item', { 'nav-itme--active': nav.type === active }]">
       <img :src="nav.type === active ? nav.activeImage : nav.image" class="nav-item__icon" />
+      <div>{{nav.text}}</div>
     </a>
   </section>
 </template>
@@ -40,9 +41,11 @@ body {
   right: 0;
   bottom: 0;
   height: 55px;
-  line-height: 55px;
+  opacity:0.8;
+  font-size:12px;
+  line-height: 23px;
   background: #fff;
-
+  text-align:center;
   &::after {
     @mixin border-retina (top);
   }
@@ -52,9 +55,10 @@ body {
   float: left;
   width: 25%;
   text-align: center;
-
+  color:#000;
+  margin-top:8px;
   &__icon {
-    height: 38px;
+    height: 25px;
     vertical-align: middle;
   }
 }

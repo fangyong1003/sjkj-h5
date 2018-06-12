@@ -120,11 +120,11 @@ body {
     font-size: 17px;
 
     &.van-button--default {
-      background-color: #333;
+      background-color: #C4D52F;
     }
 
     &.van-button--primary {
-      background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+      background-color: #342C2A;
     }
 
     @media(max-width: 321px) {

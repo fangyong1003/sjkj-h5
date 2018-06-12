@@ -1,6 +1,9 @@
 <template>
   <section class="top-bar">
-    <img class="top-bar__message-icon" src="./images/message.png" @click="onMessageClicked" />
+    <div class="top-bar_messagebox">
+      <img class="top-bar__message-icon" src="./images/message.png" @click="onMessageClicked" />
+      <div>消息</div>
+    </div>
     <div class="top-bar__search" @click="onSearchClicked">
       <img class="top-bar__search-icon" src="./images/search.png" />
       <p class="top-bar__search-text">搜一下就出来了</p>
@@ -8,6 +11,7 @@
     <div class="top-bar__yuanbao" @click="onDiamondClicked">
       <!-- <p class="">{{ diamond }}</p> -->
       <img class="top-bar__yuanbao-icon" src="./images/yuanbao.png" />
+      <div>食间豆</div>
     </div>
   </section>
 </template>
@@ -62,12 +66,16 @@ body {
   color: #fff;
   z-index: 10;
 
-  &__message-icon {
+  &_messagebox{
     position: absolute;
-    top: 14px;
+    top: 10px;
     left: 15px;
-    width: 24px;
-    height: 24px;
+    font-size: 12px;
+    text-align: center;
+  }
+  &__message-icon {
+    width: 18px;
+    height: 18px;
   }
 
   &__search {
@@ -91,17 +99,16 @@ body {
   &__yuanbao {
     position: absolute;
     right: 0;
-    top: 18px;
+    top: 10px;
     width: 52px;
-    height: 30px;
-    line-height: 17px;
+    height: 50px;
     font-size: 12px;
     text-align: center;
   }
 
   &__yuanbao-icon {
-    width: 24px;
-    height: 15px;
+    width: 18px;
+    height:18px;
   }
 }
 </style>

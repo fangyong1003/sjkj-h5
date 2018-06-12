@@ -6,11 +6,9 @@
       v-if="hasAddress"
       class="cap-logistics__address">
       <div class="cap-logistics__address-content">
-        <div>
-          <p class="cap-logistics__address-name">{{ userName }}</p>
-          <p class="cap-logistics__address-tel">{{ tel }}</p>
-        </div>
-        <p class="cap-logistics__address-detail">{{ addressDetail }}</p>
+          <p class="cap-logistics__address-name">收货人：{{ userName }}</p>
+          <!--<div class="cap-logistics__address-tel">收货地址：{{ tel }}</div>-->
+          <p class="cap-logistics__address-detail">收货地址：{{ addressDetail }}</p>
       </div>
     </div>
     <div
@@ -141,10 +139,10 @@ export default {
       overflow: hidden;
       margin-right: 15px;
       padding-right: 0;
-
+      color：#363636；
       > div {
         overflow: hidden;
-        font-size: 17px;
+        font-size: 14px;
         line-height: 24px;
       }
     }
@@ -165,7 +163,7 @@ export default {
       margin-top: 2px;
       font-size: 14px;
       line-height: 20px;
-      color: #999;
+      color: #363636;
       word-break: break-all;
     }
   }

@@ -81,7 +81,7 @@
   .category {
     .top-bar {
       padding: 10px 13px;
-      > img, .top-bar__yuanbao {
+      > img, .top-bar__yuanbao ,.top-bar_messagebox{
         display: none;
       }
     }

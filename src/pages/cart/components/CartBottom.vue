@@ -221,20 +221,29 @@ console.log(submitGoodsList)
 
       .price-num {
         /*text-align: right;*/
-        color: #f00;
+        color:#342C2A;
         line-height: 24px;
-        font-size: 13px;
+        font-size: 17px;
 
         > span {
-          font-size: 13px;
+          font-size: 17px;
           vertical-align: middle;
         }
-
         &--diamond {
           margin-left: 5px;
           .price-num__prefix {
             color: #333;
           }
+          .price-num__value {
+            color: #342C2A;
+            font-size:17px;
+          }
+        }
+        &--cash{
+        .price-num__value,.price-num__prefix {
+          color: #C4D52F;
+          font-size:17px;
+        }
         }
       }
       .desc {
@@ -275,7 +284,7 @@ console.log(submitGoodsList)
     }
 
     .bottom-button-active {
-      background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+      background-color: #342C2A;
       color: #fff;
 
       &::after {

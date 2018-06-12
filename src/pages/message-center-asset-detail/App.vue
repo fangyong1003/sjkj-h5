@@ -153,8 +153,8 @@
               break;
             case 'CREDIT':
               // 点石金
-              this.mainTitle = '点金石';
-              this.subTitle = '点金石红包';
+              this.mainTitle = '食间豆';
+              this.subTitle = '食间豆红包';
               this.timeTitle = '到账时间';
               this.moneyFrom = '购物';
               this.parseCredit(data);

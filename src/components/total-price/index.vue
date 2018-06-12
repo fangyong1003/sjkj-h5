@@ -38,15 +38,21 @@ export default {
   font-size: 13px;
 
   > span {
-    font-size: 13px;
+    font-size: 17px;
     vertical-align: middle;
   }
 
   &--diamond {
     margin-left: 5px;
     .price-num__prefix {
-      color: #333;
+      color: #342C2A;
     }
+    .price-num__value {
+      color: #342C2A;
+    }
+  }
+  &--cash{
+    color: #C4D52F;
   }
 }
 </style>

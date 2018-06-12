@@ -99,9 +99,9 @@
 
       goodsDesc() {
         const diamond = this.totalData.totalDiamond;
-        let desc = `购买可获得${diamond}点石金`;
+        let desc = `购买可获得${diamond}食间豆`;
         if (this.totalData.ruleType === 0 && +diamond > 0) {
-          desc = `现金或余额支付可获得${diamond}点石金`;
+          desc = `现金或余额支付可获得${diamond}食间豆`;
         }
         return desc;
       },
@@ -255,12 +255,10 @@
       color: #333;
       font-size: 14px;
       line-height: 20px;
-      height: 40px;
-      display: -webkit-box;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      height: 20px;
+      overflow:hidden;
+     text-overflow:ellipsis;
+     white-space:nowrap
     }
 
     .desc-wrap {
@@ -298,8 +296,11 @@
     }
 
     .desc {
-      color: #333;
+      color: #6b6b6b;
+      padding:5px 5px;
       font-size: 12px;
+      border-radius:3px;
+      background: #F7F7F7;
     }
 
     .num {
