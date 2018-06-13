@@ -30,7 +30,7 @@ export default {
     },
     layout: {
       type: [Number, String],
-      default: 2
+      default: 1
     }
   },
 
@@ -65,7 +65,11 @@ export default {
     float: left;
     width: 100%;
   }
-
+  &--1 {
+    .goods-list-item {
+      width: 100%;
+    }
+  }
   &--2 {
     .goods-list-item {
       width: 50%;

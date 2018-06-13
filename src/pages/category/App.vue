@@ -2,14 +2,23 @@
   <div class="category">
     <top-bar></top-bar>
     <div class="category-wrap">
-      <van-badge-group class="cap-taglist-nav" :active-key="activeKey">
+  <!--    <van-badge-group class="cap-taglist-nav" :active-key="activeKey">
         <van-badge
           v-for="(nav, index) in routerNav"
           :key="index"
           :title="nav.name"
           @click="onClick"
         />
-      </van-badge-group>
+      </van-badge-group>-->
+
+      <van-tabs  @click="onClick">
+        <van-tab
+        v-for="(nav, index) in routerNav"
+        :key="index"
+        :title="nav.name"
+        />
+      </van-tabs>
+
       <router-view>
         <img slot="banner" v-if="getBanner.isShow" class="category-banner" :src="getBanner.bannerBg" />
       </router-view>
@@ -26,7 +35,7 @@
 
     data() {
       return {
-        activeKey: 0
+        active: 0
       };
     },
 
@@ -41,7 +50,7 @@
 
     computed: {
       getBanner() {
-        const { showBanner, banner } = this.routerNav[this.activeKey]
+        const { showBanner, banner } = this.routerNav[this.active]
         console.log('showBanner, banner', showBanner, banner)
         return {
           isShow: showBanner,
@@ -52,7 +61,7 @@
 
     methods: {
       onClick(key) {
-        this.activeKey = key;
+        this.active = key;
         const { name, type } = this.routerNav[key];
         if (type === 'recommend') {
           console.log('recommend ===>');
@@ -88,14 +97,12 @@
   }
   .category-wrap {
     position: relative;
-    padding-left: 80px;
     background-color: #f2f2f2;
     height: calc(100vh - 107px);
     overflow: hidden
   }
   .category-banner {
     width: 100%;
-    margin-bottom: 7px;
   }
   .cap-taglist-nav {
     top: 0;
@@ -112,6 +119,12 @@
   .captaglist {
     height: calc(100vh - 140px);
     overflow: auto;
+  }
+  .van-tab--active{
+   color:#C4D52F;
+  }
+  .van-tabs__nav-bar{
+    background:#C4D52F;
   }
   .van-badge--select {
     color: #FF3536;

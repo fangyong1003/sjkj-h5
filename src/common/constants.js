@@ -25,12 +25,12 @@ export const SELL_RULE_TEXT = {
   [SELL_TYPE.DIAMOND]: {
     mainKey: 'cashYuan',
     key: 'diamondYuan',
-    text: '点石金'
+    text: '食间豆'
   },
   [SELL_TYPE.DIAMOND_REMAINDER]: {
     mainKey: 'remainderYuan',
     key: 'diamondYuan',
-    text: '点石金'
+    text: '食间豆'
   }
 };
 
@@ -38,20 +38,20 @@ export const SELL_RULE_VALUE_MAP = {
   [SELL_TYPE.CASH]: {
     main: [
       { key: 'cash', prefix: '¥', suffix: '' },
-      { key: 'diamond', prefix: '点石金价:', suffix: ''}
+      { key: 'diamond', prefix: '食间豆价:', suffix: ''}
     ],
     sub: []
   },
   [SELL_TYPE.DIAMOND]: {
     main: [{ key: 'cash', prefix: '¥', suffix: '' }],
     sub: [
-      { key: 'diamond', prefix: '', suffix: '点石金' }
+      { key: 'diamond', prefix: '', suffix: '食间豆' }
     ]
   },
   [SELL_TYPE.DIAMOND_REMAINDER]: {
     main: [{ key: 'remainder', prefix: '余额', suffix: '' }],
     sub: [
-      { key: 'diamond', prefix: '', suffix: '点石金' }
+      { key: 'diamond', prefix: '', suffix: '食间豆' }
     ]
   }
 };

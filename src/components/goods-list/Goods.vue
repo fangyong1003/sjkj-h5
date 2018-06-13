@@ -14,7 +14,7 @@
       </div>
       <template v-if="onlyCredit && goodsInfo.price.diamondPriceYuan">
         <p class="goods-list__price">
-          <span class="goods-list__price-prefix">点石金价: </span>
+          <span class="goods-list__price-prefix">食间豆价: </span>
           <span class="goods-list__price-number">{{ goodsInfo.price.diamondPriceYuan }}</span>
         </p>
       </template>
@@ -75,6 +75,7 @@ export default {
       return this.goodsInfo.tags || [];
     },
     imageUrl() {
+      console.log(this.goodsInfo.photos);
       return this.goodsInfo.photos[0] || 'http://img.yzcdn.cn/image/wap/no_pic.png';
     },
     goodsUrl() {

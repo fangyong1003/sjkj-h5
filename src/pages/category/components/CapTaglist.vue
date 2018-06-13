@@ -5,10 +5,10 @@
       <span class="right"></span>
       {{name}}
       <span class="left"></span>
-    </div> -->
+    </div>-->
     <slot name="banner"></slot>
     <goods-list
-      :layout="2"
+      :layout="1"
       :list="goodsList"
       v-waterfall-lower="fetchGoods"
       :waterfall-disabled="waterfallDisabled"
@@ -122,7 +122,7 @@
     }
 
     .goods-list-item {
-      width: 45% !important;
+      width: 100% !important;
 
       .goods-list__title {
         height: 20px;

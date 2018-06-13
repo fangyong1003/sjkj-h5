@@ -21,9 +21,9 @@
           </div>
           <span class="van-card__num">x {{ data.goodsNumber }}</span>
         </div>
-        <div class="van-card__row">
+    <!-- <div class="van-card__row">
           <div class="van-card__diamond">{{ totalDesc }}</div>
-        </div>
+        </div> -->
       </template>
     </van-card>
   </div>
@@ -104,7 +104,7 @@ export default {
 
 .cap-order-goods-card {
   position: relative;
-
+  margin-top:10px;
   &:not(:last-child) {
     &::after {
       @mixin border-retina (bottom);

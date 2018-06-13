@@ -64,7 +64,7 @@
 
   &__express {
     .van-cell__value {
-      color: #f00;
+      color: #363636;
     }
   }
 }

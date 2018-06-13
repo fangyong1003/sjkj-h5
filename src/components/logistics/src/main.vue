@@ -139,7 +139,12 @@ export default {
       overflow: hidden;
       margin-right: 15px;
       padding-right: 0;
-      color：#363636；
+      color:#363636;
+      background-image: url('../images/site.png');
+      background-position:0% 50%;
+      background-size:15px 20px;
+      background-repeat:no-repeat;
+      padding-left:30px;
       > div {
         overflow: hidden;
         font-size: 14px;
@@ -148,11 +153,10 @@ export default {
     }
 
     &-name {
-      float: left;
       max-width: 160px;
       margin-right: 20px;
-
       @mixin multi-ellipsis 1;
+      font-size:14px;
     }
 
     &-tel {

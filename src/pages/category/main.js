@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 import VueRouter from 'vue-router';
-import { BadgeGroup, Badge, Lazyload } from 'vant';
+import { BadgeGroup, Badge, Lazyload , Tab, Tabs } from 'vant';
 import { getCategoryNav } from './api';
 
 // import Recommend from './components/Recommend.vue';
@@ -22,6 +22,8 @@ Vue.use(VueRouter);
 Vue.use(BadgeGroup);
 Vue.use(Badge);
 Vue.use(Lazyload);
+Vue.use(Tab);
+Vue.use(Tabs);
 
 /* eslint-disable no-new */
 getCategoryNav().then((data) => {
