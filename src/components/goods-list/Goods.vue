@@ -1,16 +1,21 @@
 <template>
   <a :class="goodsClass" :href="goodsUrl">
     <div class="goods-list__image-wrap">
-      <img class="goods-list__image" v-lazy="imageUrl" />
+      <img class="goods-list__image" :src="imageUrl" />
     </div>
     <div class="goods-list__info">
       <h3 class="goods-list__title">
         {{ goodsInfo.title }}
       </h3>
-      <div v-if="showTags" class="goods-list__tags">
-        <span v-for="(tag, index) in tags"
-          :key="index"
-          :class="['goods-list__tag', `goods-list__tag--${index}`]">{{ tag }}</span>
+      <div class="tagbox">
+        <div v-if="showTags" class="goods-list__tags">
+          <span v-for="(tag, index) in tags"
+            :key="index"
+            :class="['goods-list__tag', `goods-list__tag--${index}`]">{{ tag }}</span>
+        </div>
+      </div>
+      <div class="goods-list__buy">
+          <span v-if="goodsInfo.price.sales">{{goodsInfo.price.sales}}人已买</span>
       </div>
       <template v-if="onlyCredit && goodsInfo.price.diamondPriceYuan">
         <p class="goods-list__price">
@@ -75,7 +80,6 @@ export default {
       return this.goodsInfo.tags || [];
     },
     imageUrl() {
-      console.log(this.goodsInfo.photos);
       return this.goodsInfo.photos[0] || 'http://img.yzcdn.cn/image/wap/no_pic.png';
     },
     goodsUrl() {
@@ -96,34 +100,44 @@ export default {
 
 .goods-list {
   &__image-wrap {
-    position: relative;
-    padding-top: 100%;
+    float:left;
+    width:30%;
     height: 0;
+    padding-bottom: 30%;
     border-radius: 5px;
     overflow: hidden;
+    position:relative;
   }
 
   &__image {
+    width:100%;
     @mixin abs-center;
-    max-width: 100%;
-    max-height: 100%;
   }
 
   &__info {
-    padding: 5px;
+    padding-left: 10px;
+    float:left;
+    width:70%;
+    box-sizing:border-box;
   }
-
+  .tagbox{
+    height:20px;
+  }
   &__title {
-    margin: 8px 0 3px;
     max-height: 40px;
-    height: 40px;
+    height: 40px !important;
     line-height: 20px;
-    font-size: 14px;
-    color: #000;
+    font-size: 15px;
+    color: #363636;
 
     @mixin multi-ellipsis 2;
   }
-
+  &__buy{
+    font-size: 13px;
+    color: #6B6B6B;
+    height:20px;
+    margin-bottom: 5px;
+  }
   &__tags {
     margin-bottom: 5px;
     height: 20px;
@@ -152,7 +166,9 @@ export default {
 
   &__price {
     display: inline-block;
-    color: #f00;
+    color: #342C2A;
+    font-family: PingFangSC-Medium;
+    font-size:16px;
     line-height: 17px;
   }
 
@@ -170,7 +186,7 @@ export default {
 
   &__origin-price {
     display: inline-block;
-    color: #999;
+    color: #6b6b6b;
     line-height: 17px;
     text-decoration: line-through;
   }
@@ -189,7 +205,8 @@ export default {
   margin: 3px;
   background: #fff;
   text-align: left;
-
+  float:left;
+  width:100%;
   &--center {
     .goods-list__price {
       display: block;

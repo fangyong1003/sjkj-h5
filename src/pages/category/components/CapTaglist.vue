@@ -112,7 +112,7 @@
   @import "mixins";
 
   .captaglist {
-    padding: 16px 18px;
+    padding: 0px 18px;
     background: #fff;
 
     .goods-list {
