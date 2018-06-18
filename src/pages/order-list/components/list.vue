@@ -11,7 +11,8 @@
 
   <!-- 空列表 -->
   <div class="order-list__empty" v-if="isEmptyList">
-    <span class="order-list__empty-text">暂无订单</span>
+    <img src="../images/nocontent.png" style="margin-bottom:10px;width:120px">
+    <div class="order-list__empty-text">暂无内容</div>
   </div>
 </div>
 </template>
@@ -134,15 +135,6 @@ export default {
   position: relative;
   padding-top: 150px;
   text-align: center;
-}
-.order-list__empty::before {
-  content: '';
-  position: absolute;
-  left: 30px;
-  right: 30px;
-  top: 156px;
-  height: 1px;
-  background: #CCC;
 }
 .order-list__empty-text {
   position: relative;

@@ -119,14 +119,20 @@ export default {
 
     .price-num {
       font-size: 14px;
-
       &--diamond {
         display: block;
         margin-left: 0;
-      }
 
-      > span {
-        font-size: 14px;
+        &__prefix{
+        font-family: PingFangSC-Regular;
+        font-size: 13px;
+        color: #363636;
+        }
+        &__value{
+        font-family: PingFangSC-Medium;
+        font-size:17px;
+        color: #342C2A;
+        }
       }
     }
 
@@ -143,13 +149,18 @@ export default {
       font-size: 14px;
     }
 
-    &__desc,
     &__num,
     &__diamond {
       font-size: 14px;
       color: #999;
     }
-
+    &__desc{
+    background: #F7F7F7;
+    border-radius: 3px;
+    padding:2px 6px;
+    font-size:12px;
+    color:#999;
+    }
     &__num {
       min-width: 40px;
     }

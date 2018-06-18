@@ -22,14 +22,14 @@
       />
     </div>
     <slot></slot>
-    <template v-if="!isEmpty">
+  <!--  <template v-if="!isEmpty">
       <cap-order-goods-price
         v-if="showTotalPrice"
         :price="price"
         :shopTotalData="shopTotalData"
         :num="totalNum"
       />
-    </template>
+    </template>-->
     <slot name="bottom"></slot>
   </van-cell-group>
 </template>

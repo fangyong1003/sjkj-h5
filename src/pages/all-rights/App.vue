@@ -1,7 +1,7 @@
 <template>
   <div class="all-rights">
     <div class="all-rights_inner" v-for="item in levels">
-      <div class="title" :class="{'active': item.levelInnerCode === currentLevelInnerCode}">{{item.levelInnerCode}}{{item.levelName}}<span v-if="item.levelInnerCode === currentLevelInnerCode">（当前我是{{currentLevelInnerCode}}会员）</span></div>
+      <div class="title" :class="{'active': item.levelInnerCode === currentLevelInnerCode}">{{item.levelName}}<span style="color:#363636" v-if="item.levelInnerCode === currentLevelInnerCode">（当前我是{{currentLevelInnerCode}}会员）</span></div>
       <ul class="all-rights_detail">
         <li v-for="right in item.rights" @click="selectInfo(right)" :class="right.type">{{rightMap[right.type]}}</li>
       </ul>
@@ -31,7 +31,6 @@
   const rightMap = {
     'CREDIT': '积分',
     'EXCHANGE': '兑换',
-    'RED_PACKAGE': '红包'
   }
 
   export default {
@@ -60,7 +59,7 @@
         intro: {
           type: 'CREDIT',
           name: '自己消费和推荐消费均可获得积分奖励',
-          text: '自己消费得70%点石金奖励，可获得直推用户30%点石金奖励'
+          text: '自己消费得70%食间豆奖励，可获得直推用户30%食间豆奖励'
         }
       };
     },
@@ -82,7 +81,16 @@
   @import 'mixins';
 
   body {
-    background-color: #fff;
+    background-color: #f4f4f4;
+    min-height:100%;
+  }
+  .all-rights_inner{
+    width:90%;
+    margin-left:5%;
+    border:1px solid #e5e5e5;
+    border-radius:8px;
+    margin-top:10px;
+    background:#fff;
   }
   .all-rights {
     ._inner {
@@ -98,18 +106,7 @@
       color: #333333;
       line-height: 20px;
       &.active {
-        color: #E20B20;
-      }
-      &:before {
-        content: '';
-        display: block;
-        width: 4px;
-        height: 20px;
-        background: #F23333;
-        position: absolute;
-        top: 10px;
-        left: 0;
-        z-index: 10;
+        color: #C4D52F;
       }
       &::after {
         @mixin border-retina (bottom);
@@ -124,32 +121,31 @@
         @mixin border-retina (bottom);
       }
       li {
-        width: 33.3%;
+        width: 50%;
         height: 44px;
-        padding-top: 80px;
-        background-position: center 28px;
+        padding-top: 60px;
+        background-position: center 10px;
         background-repeat: no-repeat;
         text-align: center;
         font-size: 17px;
         color: #333333;
         line-height: 24px;
         position: relative;
-        &:not(:last-child) {
-          &::after {
-            @mixin border-retina (right);
-          }
-        }
+        display:none;
         &.CREDIT {
-          background-size: 38px 40px;
+          background-size: 40px 40px;
           background-image: url('./images/points.png');
+          display:block;
         }
         &.EXCHANGE {
-          background-size: 33px 40px;
+          background-size: 40px 40px;
           background-image: url('./images/exchange.png');
+          display:block;
         }
         &.RED_PACKAGE {
           background-size: 33px 40px;
           background-image: url('./images/redbag.png');
+          display:none;
         }
       }
     }
@@ -178,7 +174,7 @@
           background-image: url('./images/points.png');
         }
         &.EXCHANGE {
-          background-size: 33px 40px;
+          background-size: 40px 40px;
           background-image: url('./images/exchange.png');
         }
         &.RED_PACKAGE {

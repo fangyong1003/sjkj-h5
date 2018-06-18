@@ -104,11 +104,11 @@ body {
     height: 3px;
     left: 10%;
     margin-left: -10px;
-    background: #f00;
+    background: #C4D52F;
   }
 
   .van-tab--active {
-    color: #f00;
+    color:#C4D52F;
   }
 }
 .order-list__fix-top {

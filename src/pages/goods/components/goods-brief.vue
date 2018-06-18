@@ -23,7 +23,7 @@
     </div>
     <!-- 购买信息 -->
     <div class="goods-brief__buy-info">
-      <span class="goods-brief__diamond">购买可得{{ diamond }}点石金</span>
+      <span class="goods-brief__diamond">购买可得{{ diamond }}食间豆</span>
       <span class="goods-brief__sales">月销{{ sales }}笔</span>
     </div>
     <!-- sku选择 -->

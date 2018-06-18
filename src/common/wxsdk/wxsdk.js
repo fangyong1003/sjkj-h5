@@ -141,6 +141,7 @@ export function putConfigToWX({ baseUrl, debug = false, jsApiList = [] }) {
       'showOptionMenu',
       'addCard',
       'scanQRCode',
+      'chooseWXPay',
       ...jsApiList
     ]
   };

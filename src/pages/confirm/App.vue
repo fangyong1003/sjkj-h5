@@ -17,7 +17,7 @@
       disableCardClick>
     </cap-order-goods>
 
-    <vm-price
+  <vm-price
       :orderTotalData="orderTotalData"
       :expressTotalPrice="expressTotalPrice"
     >
@@ -26,7 +26,7 @@
     <!-- 下单操作区 -->
     <van-submit-bar
       :loading="showOrderLoading"
-      button-text="去付款"
+      button-text="提交订单"
       @submit="handleSubmit"
     >
       <div class="order-submit-bar__info">
@@ -208,7 +208,8 @@ body {
   .van-submit-bar {
     .van-button--danger {
       font-size: 17px;
-      background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+      background: #342C2A;
+      border:1px solid #342C2A;
     }
 
     &__bar {
@@ -217,6 +218,9 @@ body {
 
     &__price {
       display: none;
+    }
+    .price-num--diamond{
+      display:none;
     }
   }
 

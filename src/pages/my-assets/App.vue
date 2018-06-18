@@ -1,6 +1,12 @@
 <template>
   <div class="my-assets">
-    <van-cell-group class="my-assets__list" style="margin-bottom: 12px;">
+    <div class="myast">
+    <dl>
+      <dt>点石金<span>（可用于购物）</span></dt>
+      <dd>{{diamond}}</dd>
+    </dl>
+    </div>
+    <!--  <van-cell-group class="my-assets__list" style="margin-bottom: 12px;">
       <van-cell isLink @click="goToPage('my-assets-gold')">
         <img src="./images/gold.png" alt=""/>
         <dl>
@@ -8,7 +14,7 @@
           <dd>{{diamond}}</dd>
         </dl>
       </van-cell>
-      <van-cell isLink @click="goToPage('my-assets-jzb')">
+    <van-cell isLink @click="goToPage('my-assets-jzb')">
         <img src="./images/jzb.png" alt=""/>
         <dl>
           <dt>点石金红包<span>（可用于返现）</span></dt>
@@ -21,7 +27,7 @@
           <dt>余额<span>（可用于提现）</span></dt>
           <dd>{{remain}}</dd>
         </dl>
-      </van-cell>
+      </van-cell>-->
     </van-cell-group>
     <van-cell-group class="my-assets__link">
       <van-cell title="我的团队业绩" isLink @click="goToPage('my-assets-achievement')" />
@@ -61,7 +67,12 @@ export default {
 body {
   background-color: #f7f7f7;
 }
-
+.myast{
+  background-image:url(./images/property_bg.png);
+  background-size:375px 250px;
+  background-repeat:no-repeat;
+  background:center center;
+}
 .my-assets {
   &__list {
     .van-cell {

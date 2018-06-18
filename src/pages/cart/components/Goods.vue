@@ -17,7 +17,7 @@
           <div class="goods-name" >
             {{goods.item.title}}
           </div>
-          <div class="sku-str" :class="{'edit-sku-str': isEditing}">{{ goods.skuValues }}</div>
+          <div class="sku-str" :class="{'edit-sku-str': isEditing}"><span>{{ goods.skuValues }}</span></div>
           <div v-if="!isInvalid" style="display: inline-block;">
             <total-price :total-data="totalData" />
             <p class="desc">{{ goodsDesc }}</p>
@@ -276,6 +276,14 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+
+      span{
+        background: #F7F7F7;
+        border-radius: 3px;
+        display:inline;
+        padding:3px 5px;
+      }
     }
 
     .edit-sku-str {

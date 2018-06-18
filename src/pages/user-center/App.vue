@@ -5,8 +5,10 @@
         <span class="user-center__msg" @click="goToPage('message-center')"></span>
         <span class="user-center__setting" @click="goToSetting"></span>
       </div>
-      <img v-if="user.user_image" :src="user.user_image" alt=""/>
-      <img v-else src="./images/default.png" alt=""/>
+      <dl class="photoBox">
+        <img v-if="user.user_image" :src="user.user_image" alt=""/>
+        <img v-else src="./images/default.png" alt=""/>
+      </dl>
       <dl>
         <dt v-if="!isLogin" @click="onLoginClicked"><span>登录</span> / <span>注册</span></dt>
         <dd v-else>
@@ -164,13 +166,16 @@ export default {
   body {
     background-color: #f7f7f7;
   }
+  .photoBox{
+    position:relative;
+  }
   .user-center {
     .van-cell__value {
       overflow: initial;
     }
     &__header {
       padding: 20px 15px 25px 15px;
-      background-image: linear-gradient(0deg, #AAA9C9 0%, #6B6A8A 100%);
+      background-image: linear-gradient(-135deg, #342C2A 0%, #504E4D 100%);
       img, dl {
         display: inline-block;
         font-size: 0;
@@ -203,10 +208,10 @@ export default {
       height: 24px;
       line-height: 24px;
       padding: 0 12px 0 30px;
-      background: #FFFFFF;
-      border-radius: 39px;
+      border-radius: 5px;
       font-size: 14px;
-      color: #9796B6;
+      color: #fff;
+      border:1px solid #fff;
       &.vip-level{
         background-repeat: no-repeat;
         background-size: 16px 16px;
@@ -271,7 +276,7 @@ export default {
       background-image: url('./images/unreceived.png');
     }
     &__order-done {
-      background-size: 24px 28px;
+      background-size: 28px 28px;
       background-image: url('./images/done.png');
     }
     &__icon {
@@ -297,6 +302,7 @@ export default {
       }
       &.help {
         background-image: url('./images/help.png');
+        background-size:16px;
       }
     }
     &__flex {

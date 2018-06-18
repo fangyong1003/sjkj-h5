@@ -1,17 +1,17 @@
 <template>
-  <div class="total-price">
+  <div class="dou-price">
+    <img src="./images/dou.png" class="douPic">
+    <span class="dou">食间豆</span>
     <template v-if="totalData.ruleType === 0 && totalData.mainValues.length">
       <span
         v-for="(mainValue, index) in totalData.mainValues"
         :key="index"
         :class="`price-num price-num--${mainValue.key}`"
       >
-        <span class="price-num__prefix">{{ mainValue.prefix }}</span>
         <span class="price-num__value">{{ mainValue.value | cent2yuan }}</span>
-        <span class="price-num__suffix">{{ mainValue.suffix }}</span>
       </span>
     </template>
-    <p v-else class="price-num">{{totalData.totalPrice}}</p>
+    <p v-else style="float:right" class="price-num">{{totalData.totalPrice}}</p>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 import { cent2yuan } from '@/common/utils/money';
 
 export default {
-  name: 'total-price',
+  name: 'dou-price',
 
   props: {
     totalData: Object
@@ -31,7 +31,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.douPic{
+  width:14px;
+  margin-right:5px;
+}
 .price-num {
   color: #f00;
   line-height: 24px;
@@ -44,20 +48,23 @@ export default {
 
   &--diamond {
     line-height:25px;
+    float:right;
     .price-num__prefix {
     font-size: 13px;
     color: #363636;
+    display:none;
     }
     .price-num__value {
     font-size: 17px;
     color: #342C2A;
     font-family: PingFangSC-Medium;
     }
+    .price-num__suffix{
+      display:none;
+    }
   }
   &--cash{
-    font-size:15px;
-    font-family: PingFangSC-Medium;
-    color: #C4D52F;
+    display:none;
   }
 }
 </style>

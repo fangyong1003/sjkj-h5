@@ -125,6 +125,8 @@
   }
   .van-tabs__nav-bar{
     background:#C4D52F;
+    width:20px !important;
+    margin-left:35px;
   }
   .van-badge--select {
     color: #FF3536;

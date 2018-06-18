@@ -209,9 +209,7 @@ console.log(submitGoodsList)
     }
 
     .total-price {
-      /*flex: 1;*/
       float: left;
-      /*padding-left: 10px;*/
       height: 50px;
       box-sizing: border-box;
       font-size: 12px;
@@ -220,11 +218,10 @@ console.log(submitGoodsList)
       color: #999;
 
       .price-num {
-        /*text-align: right;*/
         color:#342C2A;
         line-height: 24px;
         font-size: 17px;
-
+        display:inline-block;
         > span {
           font-size: 17px;
           vertical-align: middle;
@@ -267,7 +264,7 @@ console.log(submitGoodsList)
       position: relative;
       color: #999;
       font-size: 14px;
-
+      border:0;
       &::after {
         @mixin border-retina (top, right, bottom, left);
       }
@@ -286,10 +283,6 @@ console.log(submitGoodsList)
     .bottom-button-active {
       background-color: #342C2A;
       color: #fff;
-
-      &::after {
-        @mixin border-retina (top, right, bottom, left), #f00;
-      }
     }
   }
 
