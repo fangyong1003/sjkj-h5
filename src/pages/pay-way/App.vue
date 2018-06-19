@@ -28,6 +28,7 @@
 import { Icon } from 'vant';
 import Args from '@/common/utils/args';
 import { goToPage } from '@/common/helpers';
+import { initPayConfig } from '@/common/wxsdk/pay';
 import api from './api';
 
 
@@ -55,7 +56,7 @@ export default {
 
   methods: {
     handleWeixinPay() {
-    
+      initPayConfig(this.ids)
     },
     handleDianshiPay() {
       api.pay('dianshi').then(() => {
@@ -126,6 +127,14 @@ export default {
       this.getCountdown();
     }
     window.addEventListener('beforeunload', this.unloadFunc);
+
+    let url = window.location.href;
+    let code = Args.get('code');
+    if(code == null||code ===''){
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfcc129b5b2daddd&redirect_uri='+encodeURIComponent(url)+'&response_type=code&scope=SCOPE&state=STATE#wechat_redirect';
+    }else{
+      postCode(code);
+    }
   },
 
 };

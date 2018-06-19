@@ -33,5 +33,18 @@ export default {
     }, {
       isJson: true
     });
-  }
+  },
+
+  postCode(code){
+    return ajax.post('/api/weixin/openid', {
+      code: code
+    }, {
+      errorMessage: '失败'
+    }).catch((err) => {
+      Toast(err);
+      throw err;
+    });
+  },
+
+
 };
