@@ -4,6 +4,7 @@ import Args from '@/common/utils/args';
 import decodeHTMLEntities from './decodeHTMLEntities';
 import unescape from './unescape';
 import find from 'lodash/find';
+import ajax from '@/common/ajax';
 import { getConfig, setConfig } from './config';
 import wxActions from './wx';
 import wxReady from './wxsdk';
@@ -11,9 +12,11 @@ import wxReady from './wxsdk';
 const { wx } = wxActions;
 
 export const initPayConfig = (orderIds) =>{
-    ajax.get('/api/payment/apply/h5', {
-      orderIds: orderIds
+    const idArr = JSON.stringify(orderIds.split(','));
+    ajax.post('/api/payment/apply/h5', {
+      data: idArr
     },{
+      isJson: true,
       errorMessage: '获取支付参数失败'
     }).then((resp) => {
         let configs = {

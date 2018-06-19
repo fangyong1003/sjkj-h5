@@ -131,9 +131,9 @@ export default {
     let url = window.location.href;
     let code = Args.get('code');
     if(code == null||code ===''){
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfcc129b5b2daddd&redirect_uri='+encodeURIComponent(url)+'&response_type=code&scope=SCOPE&state=STATE#wechat_redirect';
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfcc129b5b2daddd&redirect_uri='+encodeURIComponent(url)+'&response_type=code&scope=snsapi_base&state=1#wechat_redirect';
     }else{
-      postCode(code);
+        api.postCode(code);
     }
   },
 
