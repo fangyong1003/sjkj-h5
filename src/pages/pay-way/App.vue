@@ -29,8 +29,8 @@ import { Icon } from 'vant';
 import Args from '@/common/utils/args';
 import { goToPage } from '@/common/helpers';
 import { initPayConfig } from '@/common/wxsdk/pay';
+import YZLocalStorage from '@/common/utils/local_storage';
 import api from './api';
-
 
 export default {
   name: 'pay-way',
@@ -127,13 +127,17 @@ export default {
       this.getCountdown();
     }
     window.addEventListener('beforeunload', this.unloadFunc);
-
-    let url = window.location.href;
-    let code = Args.get('code');
-    if(code == null||code ===''){
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfcc129b5b2daddd&redirect_uri='+encodeURIComponent(url)+'&response_type=code&scope=snsapi_base&state=1#wechat_redirect';
+    let user = JSON.parse(YZLocalStorage.getItem('user') || '{}');
+    if(user.openId){
+        //do nothing
     }else{
-        api.postCode(code);
+      let url = window.location.href;
+      let code = Args.get('code');
+      if(code == null||code ===''){
+          window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdfcc129b5b2daddd&redirect_uri='+encodeURIComponent(url)+'&response_type=code&scope=snsapi_base&state=1#wechat_redirect';
+      }else{
+          api.postCode(code);
+      }
     }
   },
 

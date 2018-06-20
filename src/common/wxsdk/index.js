@@ -8,7 +8,7 @@ const { wx } = wxActions;
 const initWXSdk = (config = {}) => {
   setConfig(config);
 
-  const { debug = false, jsApiList = [] } = config;
+  const { debug = true, jsApiList = [] } = config;
   const { shareConfig, baseUrl } = getConfig();
 
   putConfigToWX({ baseUrl, debug, jsApiList });

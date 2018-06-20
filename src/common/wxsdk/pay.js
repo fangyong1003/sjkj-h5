@@ -8,9 +8,19 @@ import ajax from '@/common/ajax';
 import { getConfig, setConfig } from './config';
 import wxActions from './wx';
 import wxReady from './wxsdk';
+import YZLocalStorage from '@/common/utils/local_storage';
 
 const { wx } = wxActions;
-
+function onBridgeReady(obj){
+     WeixinJSBridge.invoke(
+         'getBrandWCPayRequest',obj,
+         function(res){
+             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+              alert("付款成功!")
+             }
+         }
+     );
+    }
 export const initPayConfig = (orderIds) =>{
     const idArr = JSON.stringify(orderIds.split(','));
     ajax.post('/api/payment/apply/h5', {
@@ -20,21 +30,26 @@ export const initPayConfig = (orderIds) =>{
       errorMessage: '获取支付参数失败'
     }).then((resp) => {
         let configs = {
+          appId:resp.appId,
           package:resp.packageExt, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
-          signType:'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+          signType:resp.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
           paySign: resp.paySign, // 支付签名
-          timestamp: resp.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+          timeStamp: resp.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
           nonceStr: resp.nonceStr, // 支付签名随机串，不长于 32 位
         };
-        wx.chooseWXPay({
-            configs,
-            success: function (res) {
-                alert("1");
-            }
-          });
-    }).catch((err) => {
-      throw err;
-    });
+        if (typeof WeixinJSBridge == "undefined"){
+           if( document.addEventListener ){
+               document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+           }else if (document.attachEvent){
+               document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+               document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+           }
+        }else{
+            onBridgeReady(configs);
+        }
+      }).catch((err) => {
+        throw err;
+      });
 };
 
 
