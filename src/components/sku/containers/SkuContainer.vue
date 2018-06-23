@@ -192,7 +192,7 @@ export default {
       } else if (this.isSkuCombSelected) {
         const comb = getSkuComb(this.sku.list, this.selectedSku);
         let price = comb.price;
-        // 计算现金+点石金/余额+点石金情况下的价格
+        // 计算现金+食间豆/余额+食间豆情况下的价格
         const mainRuleValue = getSellRuleMain(comb.sellPriceRule);
         if (mainRuleValue) {
           price = mainRuleValue;
@@ -565,8 +565,8 @@ export default {
     font-size: 20px;
     line-height: 44px;
     text-align: center;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
-    border-radius: 100px;
+    background: #342C2A;
+    border-radius: 5px;
     letter-spacing: .8px;
   }
 }

@@ -136,7 +136,7 @@ export default {
     background: #fff;
 
     &__price {
-      color: #f00;
+      color: #C4D52F;
     }
   }
 
@@ -173,7 +173,7 @@ export default {
     text-align: right;
 
     span {
-      color: #f00;
+      color:#C4D52F;
     }
 
     &::after {

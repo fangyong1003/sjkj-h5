@@ -41,6 +41,6 @@
     line-height: 24px;
     border: 0;
     border-radius: 5px;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+    background: #342C2A;
   }
 </style>

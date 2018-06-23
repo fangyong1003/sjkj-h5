@@ -5,15 +5,16 @@
         <span class="user-center__msg" @click="goToPage('message-center')"></span>
         <span class="user-center__setting" @click="goToSetting"></span>
       </div>
-      <dl class="photoBox">
+      <dl class="photoBox" >
         <img v-if="user.user_image" :src="user.user_image" alt=""/>
         <img v-else src="./images/default.png" alt=""/>
+        <div :class="levelStr"></div>
       </dl>
       <dl>
         <dt v-if="!isLogin" @click="onLoginClicked"><span>登录</span> / <span>注册</span></dt>
         <dd v-else>
           <div class="user-center__nick">{{user.nick_name}}</div>
-          <div class="user-center__vip" :class="levelStr">{{user.membershipName}}</div>
+          <div class="user-center__vip" >{{user.membershipName}}</div>
         </dd>
       </dl>
     </div>
@@ -207,27 +208,32 @@ export default {
       width: 60px;
       height: 24px;
       line-height: 24px;
-      padding: 0 12px 0 30px;
       border-radius: 5px;
       font-size: 14px;
       color: #fff;
       border:1px solid #fff;
-      &.vip-level{
-        background-repeat: no-repeat;
-        background-size: 16px 16px;
-        background-position: 6px center;
-        &.V1 {
-          background-image: url('./images/V1.png');
-        }
-        &.V2 {
-          background-image: url('./images/V2.png');
-        }
-        &.V3 {
-          background-image: url('./images/V3.png');
-        }
-        &.V4 {
-          background-image: url('./images/V4.png');
-        }
+      text-align:center;
+    }
+    .vip-level{
+      background-repeat: no-repeat;
+      background-size: 20px 16px;
+      background-position: 6px center;
+      width: 28px;
+       height: 16px;
+       position: absolute;
+       top: 55px;
+       left: 36px;
+      &.V1 {
+        background-image: url('./images/V1.png');
+      }
+      &.V2 {
+        background-image: url('./images/V2.png');
+      }
+      &.V3 {
+        background-image: url('./images/V3.png');
+      }
+      &.V4 {
+        background-image: url('./images/V4.png');
       }
     }
     &__order-tabwrap {

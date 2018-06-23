@@ -4,7 +4,7 @@ import { Toast } from 'vant';
 
 export const getGoldRule = () => {
   return ajax.get('/api/asset/credit', {
-    errorMessage: '获取点石金规则失败'
+    errorMessage: '获取食间豆规则失败'
   }).catch((err) => {
     Toast(err);
     throw err;
@@ -17,7 +17,7 @@ export const getDiamonds = ({ url, page }) => {
     page,
     size: 10
   }, {
-    errorMessage: '获取点石金数据失败'
+    errorMessage: '获取食间豆数据失败'
   }).catch((err) => {
     Toast(err);
     throw err;

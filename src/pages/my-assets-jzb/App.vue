@@ -1,8 +1,8 @@
 <template>
   <div class="my-assets-jzb">
     <div class="my-assets-jzb__banner">
-      <h5>点金石红包<span>（可用于返现）</span></h5>
-      <p>{{enabledProperty}}<jz-button class="action-button" @click.prevent.stop.native="checkJzb">转入点石金账户</jz-button></p>
+      <h5>食间豆红包<span>（可用于返现）</span></h5>
+      <p>{{enabledProperty}}<jz-button class="action-button" @click.prevent.stop.native="checkJzb">转入食间豆账户</jz-button></p>
     </div>
     <van-tabs
       :active="active"
@@ -73,9 +73,9 @@
       confirm-button-text="确认"
       cancel-button-text="取消"
     >
-      <!-- <div>可转入的点石金红包<span></span></div> -->
+      <!-- <div>可转入的食间豆红包<span></span></div> -->
       <input type="text" v-model="checkNum">
-      <p>说明：点石金红包转入点石金将只可用于消费，转入成功后不可撤回。</p>
+      <p>说明：食间豆红包转入食间豆将只可用于消费，转入成功后不可撤回。</p>
     </van-dialog>
   </div>
 </template>

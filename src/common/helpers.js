@@ -91,16 +91,16 @@ export const getPaidString = (order) => {
       price = `¥${order.paidCashString}`;
       break;
     case PAYMENT_TYPE.CREDIT:
-      price = `点石金${order.paidCreditsString}`;
+      price = `食间豆${order.paidCreditsString}`;
       break;
     case PAYMENT_TYPE.BALANCE:
       price = `余额${order.paidBalanceString}`;
       break;
     case PAYMENT_TYPE.CASH_CREDIT:
-      price = `¥${order.paidCashString} +点石金${order.paidCreditsString}`;
+      price = `¥${order.paidCashString} +食间豆${order.paidCreditsString}`;
       break;
     case PAYMENT_TYPE.BALANCE_CREDIT:
-      price = `余额${order.paidBalanceString} +点石金${order.paidCreditsString}`;
+      price = `余额${order.paidBalanceString} +食间豆${order.paidCreditsString}`;
       break;
   }
   return price;
@@ -113,16 +113,16 @@ export const getOrderPaidString = (order) => {
       price = `¥${order.orderPaidCashString || order.paidCashString}`;
       break;
     case PAYMENT_TYPE.CREDIT:
-      price = `点石金${order.orderPaidCreditsString || order.paidCreditsString}`;
+      price = `食间豆${order.orderPaidCreditsString || order.paidCreditsString}`;
       break;
     case PAYMENT_TYPE.BALANCE:
       price = `余额${order.orderPaidBalanceString || order.paidBalanceString}`;
       break;
     case PAYMENT_TYPE.CASH_CREDIT:
-      price = `¥${order.orderPaidCashString || order.paidCashString} +点石金${order.orderPaidCreditsString || order.paidCreditsString}`;
+      price = `¥${order.orderPaidCashString || order.paidCashString} +食间豆${order.orderPaidCreditsString || order.paidCreditsString}`;
       break;
     case PAYMENT_TYPE.BALANCE_CREDIT:
-      price = `余额${order.orderPaidBalanceString || order.paidBalanceString} +点石金${order.orderPaidCreditsString || order.paidCreditsString}`;
+      price = `余额${order.orderPaidBalanceString || order.paidBalanceString} +食间豆${order.orderPaidCreditsString || order.paidCreditsString}`;
       break;
   }
   return price;
@@ -131,7 +131,7 @@ export const getOrderPaidString = (order) => {
 export const getOrderTotal = (orderData) => {
   const result = {
     num: 0,
-    // 总共点石金
+    // 总共食间豆
     totalDiamond: 0,
     totalPrice: 0,
     mainValues: [],

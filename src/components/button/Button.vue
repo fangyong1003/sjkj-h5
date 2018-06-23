@@ -23,12 +23,12 @@ export default {
 
 <style lang="postcss">
 .jz-button {
-  border-radius: 100px;
+  border-radius: 5px;
   font-size: 17px;
 
   &.van-button--primary {
     border: 0 none;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+    background: #342C2A;
   }
 
   &.van-button--small {

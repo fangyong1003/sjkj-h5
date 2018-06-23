@@ -50,7 +50,7 @@ export default {
 
   &__view {
     margin-bottom: 30px;
-    border-radius: 100px;
+    border-radius: 5px;
     font-size: 17px;
     background: #fff;
     color: #333;
@@ -59,8 +59,8 @@ export default {
 
   &__shopping {
     font-size: 17px;
-    border-radius: 100px;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+    border-radius: 5px;
+    background: #342C2A;
     color: #fff;
     border: 0 none;
   }

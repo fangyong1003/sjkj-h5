@@ -16,7 +16,7 @@
       {{ orderTotalPrice }}
     </van-cell>
     <!-- 优惠 -->
-    <van-cell title="获得点石金">
+    <van-cell title="获得食间豆">
       {{ credit || '-' }}
     </van-cell>
   </van-cell-group>

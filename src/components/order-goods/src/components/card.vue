@@ -77,9 +77,9 @@ export default {
       // 订单详情逻辑
       if (!this.totalData) {
         // const diamond = this.data.goodsCreditsString;
-        // let desc = `购买可获得${diamond}点石金`;
+        // let desc = `购买可获得${diamond}食间豆`;
         // if (this.data.sellType === 0 && +diamond > 0) {
-        //   desc = `现金或余额支付可获得${diamond}点石金`;
+        //   desc = `现金或余额支付可获得${diamond}食间豆`;
         // } else if (!diamond) {
         //   desc = '';
         // }
@@ -167,7 +167,7 @@ export default {
 
     &__price {
       flex: 3;
-      color: #f00;
+      color:#C4D52F;
       text-align: left;
     }
 

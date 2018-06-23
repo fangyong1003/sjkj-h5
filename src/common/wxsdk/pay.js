@@ -8,20 +8,25 @@ import ajax from '@/common/ajax';
 import { getConfig, setConfig } from './config';
 import wxActions from './wx';
 import wxReady from './wxsdk';
+import { goToPage } from '@/common/helpers';
 import YZLocalStorage from '@/common/utils/local_storage';
 
 const { wx } = wxActions;
-function onBridgeReady(obj){
+function onBridgeReady(obj,orderIds,needBalanceString){
      WeixinJSBridge.invoke(
          'getBrandWCPayRequest',obj,
          function(res){
              if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-              alert("付款成功!")
+               goToPage('paid', {
+                 orderIds: orderIds,
+                 payCredits:needBalanceString,
+                 status:1
+               });
              }
          }
      );
     }
-export const initPayConfig = (orderIds) =>{
+export const initPayConfig = (orderIds,needBalanceString) =>{
     const idArr = JSON.stringify(orderIds.split(','));
     ajax.post('/api/payment/apply/h5', {
       data: idArr
@@ -45,7 +50,7 @@ export const initPayConfig = (orderIds) =>{
                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
            }
         }else{
-            onBridgeReady(configs);
+            onBridgeReady(configs,orderIds,needBalanceString);
         }
       }).catch((err) => {
         throw err;

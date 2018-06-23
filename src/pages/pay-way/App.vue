@@ -2,25 +2,38 @@
   <div class="pay-way">
       <div class="pay-way__timer">
             <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
-            <div class="payMoney">￥{{payData.needBalanceString}}</div>
+            <div v-if="this.payType == 1" class="payMoney">￥{{payData.needCreditsString}}</div>
+            <div v-if="this.payType == 2" class="payMoney">￥{{payData.needBalanceString}}</div>
       </div>
-      <div class="pay-way__item van-hairline--bottom" >
-        <img class="pay-way__icon" src="./images/dianshi.png">
-        <span>食间豆支付</span>
-        <!-- <p class="pay-way__remain">您需要支付{{ payData.needCreditsString}}食间豆，当前有{{ payData.leftCreditsString }}食间豆可用</p>-->
-        <i class="icon-check":class="{'icon-check-active': isChoosed}"  @click="chooseGoodsd()"></i>
-      </div>
-      <div class="pay-way__item van-hairline--bottom">
-        <img class="pay-way__icon" src="./images/wepay.png">
-        <span>微信支付</span>
-        <i  class="icon-check" :class="{'icon-check-active': isChoosew}"  @click="chooseGoodsw()"></i>
-      </div>
-      <div v-if="this.payType == 1" class="pay-way__do" @click="handleDianshiPay">
-          使用<span>食间豆支付</span>￥：<span class="paymoney">{{ payData.needCreditsString}}</span>
-      </div>
-      <div v-if="this.payType == 2"  class="pay-way__do"  @click="handleWeixinPay">
-          使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needBalanceString}}</span>
-      </div>
+      <template v-if="payData.type == 0">
+        <div class="pay-way__item van-hairline--bottom" >
+          <img class="pay-way__icon" src="./images/dianshi.png">
+          <span>食间豆支付</span>
+          <!-- <p class="pay-way__remain">您需要支付{{ payData.needCreditsString}}食间豆，当前有{{ payData.leftCreditsString }}食间豆可用</p>-->
+          <i class="icon-check":class="{'icon-check-active': isChoosed}"  @click="chooseGoodsd()"></i>
+        </div>
+        <div class="pay-way__item van-hairline--bottom">
+          <img class="pay-way__icon" src="./images/wepay.png">
+          <span>微信支付</span>
+          <i  class="icon-check" :class="{'icon-check-active': isChoosew}"  @click="chooseGoodsw()"></i>
+        </div>
+        <div v-if="this.payType == 1" class="pay-way__do" @click="handleDianshiPay">
+            使用<span>食间豆支付</span>￥：<span class="paymoney">{{ payData.needCreditsString}}</span>
+        </div>
+        <div v-if="this.payType == 2"  class="pay-way__do"  @click="handleWeixinPay">
+            使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needBalanceString}}</span>
+        </div>
+      </template>
+      <template v-if="payData.type == 7">
+        <div class="pay-way__item van-hairline--bottom">
+          <img class="pay-way__icon" src="./images/wepay.png">
+          <span>微信支付</span>
+          <i  class="icon-check" :class="{'icon-check-active': isChoosew}"  @click="chooseGoodsw()"></i>
+        </div>
+        <div  class="pay-way__do"  @click="handleWeixinPay">
+            使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needBalanceString}}</span>
+        </div>
+      </template>
   </div>
 </template>
 
@@ -56,7 +69,7 @@ export default {
 
   methods: {
     handleWeixinPay() {
-      initPayConfig(this.ids)
+      initPayConfig(this.ids,this.payData.needBalanceString)
     },
     handleDianshiPay() {
       api.pay('dianshi').then(() => {
@@ -75,7 +88,8 @@ export default {
         orderIds: this.ids,
         paymentType,
         returnedCreditsString,
-        returnedPropertyString
+        returnedPropertyString,
+        status:0
       });
     },
     removeLeaveConfirm() {

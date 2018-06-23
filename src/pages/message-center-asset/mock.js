@@ -71,7 +71,7 @@ export default {
                 "noticeId":7,
                 "noticeSecondType":"CREDIT",
                 "noticeTime":"2018-04-08 19:57:58",
-                "noticeTitle":"点石金到账",
+                "noticeTitle":"食间豆到账",
                 "noticeType":"ASSET",
                 "userId":35,
                 "viewFlag":"-1"

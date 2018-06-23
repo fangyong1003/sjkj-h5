@@ -1,7 +1,7 @@
 <template>
   <div class="my-assets-diamond">
     <div class="my-assets-diamond__banner">
-      <h5>点石金<span>（可用于购物）</span></h5>
+      <h5>食间豆<span>（可用于购物）</span></h5>
       <p>{{enabledCredit}}</p>
     </div>
     <div class="my-assets-diamond__head">收支明细</div>

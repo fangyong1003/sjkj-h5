@@ -114,18 +114,18 @@ export default {
             detail.price = `¥${detail.paidCashString}`;
             break;
           case PAYMENT_TYPE.CREDIT:
-            detail.price = `点石金${detail.paidCreditsString}`;
+            detail.price = `食间豆${detail.paidCreditsString}`;
             break;
           case PAYMENT_TYPE.BALANCE:
             detail.price = `余额${detail.paidBalanceString}`;
             break;
           case PAYMENT_TYPE.CASH_CREDIT:
             detail.price = `¥${detail.paidCashString}`;
-            detail.ruleText = `+点石金${detail.paidCreditsString}`;
+            detail.ruleText = `+食间豆${detail.paidCreditsString}`;
             break;
           case PAYMENT_TYPE.BALANCE_CREDIT:
             detail.price = `余额${detail.paidBalanceString}`;
-            detail.ruleText = `+点石金${detail.paidCreditsString}`;
+            detail.ruleText = `+食间豆${detail.paidCreditsString}`;
             break;
         }
         return detail;

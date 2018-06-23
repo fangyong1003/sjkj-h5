@@ -92,7 +92,7 @@ export default {
     }
 
     &__price {
-      color: #f00;
+      color:#C4D52F;
       text-align: left;
     }
   }

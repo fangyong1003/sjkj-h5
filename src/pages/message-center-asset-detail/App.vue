@@ -117,7 +117,7 @@
             url = '/api/message/asset/bonus';
             break;
           case 'CREDIT':
-            // 点石金
+            // 食间豆
             url = '/api/message/asset/credit';
             break;
         };
@@ -140,7 +140,7 @@
               this.mainTitle = '定返到账';
               this.subTitle = '';
               this.timeTitle = '到账时间';
-              this.moneyFrom = '点石金红包定返余额';
+              this.moneyFrom = '食间豆红包定返余额';
               this.parseFix(data);
               break;
             case 'BONUS':
@@ -152,7 +152,7 @@
               this.parseBonus(data);
               break;
             case 'CREDIT':
-              // 点石金
+              // 食间豆
               this.mainTitle = '食间豆';
               this.subTitle = '食间豆红包';
               this.timeTitle = '到账时间';
@@ -169,18 +169,18 @@
             goods.price = `¥${goods.paidCashString}`;
             break;
           case PAYMENT_TYPE.CREDIT:
-            goods.price = `点石金${goods.paidCreditsString}`;
+            goods.price = `食间豆${goods.paidCreditsString}`;
             break;
           case PAYMENT_TYPE.BALANCE:
             goods.price = `余额${goods.paidBalanceString}`;
             break;
           case PAYMENT_TYPE.CASH_CREDIT:
             goods.price = `¥${goods.paidCashString}`;
-            goods.ruleText = `+点石金${goods.paidCreditsString}`;
+            goods.ruleText = `+食间豆${goods.paidCreditsString}`;
             break;
           case PAYMENT_TYPE.BALANCE_CREDIT:
             goods.price = `余额${goods.paidBalanceString}`;
-            goods.ruleText = `+点石金${goods.paidCreditsString}`;
+            goods.ruleText = `+食间豆${goods.paidCreditsString}`;
             break;
         }
 

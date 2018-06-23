@@ -4,7 +4,7 @@ import { Toast } from 'vant';
 
 export const getJzbRule = () => {
   return ajax.get('/api/asset/property', {
-    errorMessage: '获取点石头金红包失败'
+    errorMessage: '获取食间豆红包失败'
   }).catch((err) => {
     Toast(err);
     throw err;
@@ -28,7 +28,7 @@ export const exchangeJZB = (amount) => {
   return ajax.post('/api/asset/property/exchange_to_credit', {
     amount
   }, {
-      errorMessage: '兑换点石金失败'
+      errorMessage: '兑换食间豆失败'
     }).catch((err) => {
       Toast(err);
       throw err;
