@@ -66,6 +66,7 @@ export default {
     width: 100%;
     padding:10px 0px;
     border-bottom:1px solid #e5e5e5;
+    background:#fff;
   }
   &--1 {
     .goods-list-item {

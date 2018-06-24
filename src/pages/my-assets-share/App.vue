@@ -110,8 +110,7 @@
     height: 40px;
     line-height: 40px;
     color: #fff;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
-    border-radius: 100px;
+    background: #342C2A;
+    border-radius: 5px;
   }
 </style>
-

@@ -154,10 +154,10 @@ export default {
     text-align: center;
 
     &--0 {
-      background-image: linear-gradient(-90deg, #38AAEE 0%, #624AF8 100%);
+      background-image: linear-gradient(0deg, #C4D52F 0%, #B7E193 100%);
     }
     &--1 {
-      background-image: linear-gradient(-90deg, #DD3DEA 6%, #A82FF9 99%);
+      background-image: linear-gradient(0deg, #FE778E 0%, #FFAFBD 99%);
     }
     &--2 {
       background-image: linear-gradient(89deg, #FB8A5E 0%, #FF5C9B 100%);

@@ -106,7 +106,7 @@ export default {
     margin-right: 15px;
     line-height: 28px;
     font-size: 20px;
-    color: #f00;
+  color: #C4D52F;
   }
 
   &__origin-price {
