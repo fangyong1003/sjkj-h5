@@ -127,8 +127,8 @@ export default {
       background-position: center -43px;
       background-repeat: no-repeat;
       .logo {
-        width: 120px;
-        height: 74px;
+        width: 40px;
+        height: 75px;
         margin: 0 auto;
         background-size: contain;
         background-repeat: no-repeat;

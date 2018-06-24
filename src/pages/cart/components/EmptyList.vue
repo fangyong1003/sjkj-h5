@@ -3,7 +3,7 @@
     <img class="empty-list__empty-img" src="../images/empty-cart.png" width="120">
     <h2>购物车还是空的，去添加点什么吧</h2>
     <template v-if="recommendList.length">
-      <img src="../images/recommend.png" width="174">
+      <div class="tit">推荐好物</div>
       <goods-list
         layout="2"
         :list="recommendList"
@@ -47,7 +47,12 @@ export default {
   .empty-list {
     padding-top: 30px;
     text-align: center;
-
+    .tit{
+      line-height:40px;
+      padding-left:15px;
+      text-align:center;
+      background:#fff;
+    }
     h2 {
       margin: 31px 0 18px;
       font-size: 17px;
@@ -79,8 +84,5 @@ export default {
       }
     }
 
-    .goods-list {
-      margin-top: 10px;
-    }
   }
 </style>

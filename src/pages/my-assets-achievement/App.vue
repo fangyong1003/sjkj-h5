@@ -1,12 +1,22 @@
 <template>
   <div class="my-assets-achievement">
     <div class="vip-center_levels" :class="currentLevelInnerCode">
-      <div class="logo"></div>
+    <dl class="photoBox" >
+      <img v-if="user.user_image" :src="user.user_image" alt=""/>
+      <img v-else src="./images/default.png" alt=""/>
+    </dl>
+    <dl class="nickBox">
+      <dd>
+        <div class="user-center__nick">{{user.nick_name}}</div>
+        <div class="user-center__vips" >{{user.membershipName}}</div>
+      </dd>
+    </dl>
+      <dl class="logo"></dl>
     </div>
     <div class="sum" v-if="!performance && currentLevelInnerCode !== 'V1'" style="margin-bottom: 12px;">
-      <p>{{ achievement }}</p>
       <h5>累计业绩</h5>
       <span>（{{initStart }} 至 今日）</span>
+      <p style="color:#C4D52F">{{ achievement }}</p>
     </div>
     <div class="search" v-if="currentLevelInnerCode !== 'V1'">
       <h5>查询团队业绩</h5>
@@ -34,6 +44,7 @@
   import Button from '@/components/button';
   import { Toast, Popup, DatetimePicker } from 'vant';
   import { goToPage } from '@/common/helpers';
+  import YZLocalStorage from '@/common/utils/local_storage';
 
   export default {
     name: 'my-assets-achievement',
@@ -62,7 +73,8 @@
         endTime: '设置结束时间',
         minDate: new Date(1992, 12, 12),
         maxDate: new Date(2100, 12, 12),
-        currentDate: new Date()
+        currentDate: new Date(),
+        user: {},
       };
     },
 
@@ -125,6 +137,7 @@
           this.achievement = performance;
         }
       });
+        this.user = JSON.parse(YZLocalStorage.getItem('user'));
     }
   };
 </script>
@@ -135,36 +148,59 @@
   .vip-center {
     &_levels {
       padding: 24px 0;
-      background-size: 375px 250px;
-      background-position: center -43px;
-      background-repeat: no-repeat;
+      background-image: linear-gradient(-135deg, #342C2A 0%, #504E4D 100%);
+      dl{
+       display:inline-block;
+       color:#fff;
+       dd{
+        margin-left:10px;
+       }
+      }
+      .nickBox{
+       margin:0px;
+      }
+      .photoBox{
+        margin-left:15px;
+        img{
+         width:44px;
+        }
+      }
+      .user-center__vips{
+        font-size:12px;
+        border:1px solid #e5e5e5;
+        width:28px;
+        padding:5px 10px;
+        border-radius:3px;
+      }
+      .user-center__nick{
+       line-height:30px;
+      }
       .logo {
-        width: 120px;
-        height: 74px;
+        width: 40px;
+        height: 75px;
         margin: 0 auto;
         background-size: contain;
         background-repeat: no-repeat;
+        float:right;
+        margin:20px;
+        margin-top:0px;
       }
       &.V1 {
-        background-image: url('./images/v1.png');
         .logo {
           background-image: url('./images/level1.png');
         }
       }
       &.V2 {
-        background-image: url('./images/v2.png');
         .logo {
           background-image: url('./images/level2.png');
         }
       }
       &.V3 {
-        background-image: url('./images/v3.png');
         .logo {
           background-image: url('./images/level3.png');
         }
       }
       &.V4 {
-        background-image: url('./images/v4.png');
         .logo {
           background-image: url('./images/level4.png');
         }
@@ -232,6 +268,6 @@
   .action-button-done {
     color: #fff;
     margin: 0 auto;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+    background: #342C2A;
   }
 </style>

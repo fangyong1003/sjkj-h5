@@ -187,7 +187,7 @@ export default {
     font-size: 12px;
     line-height: 20px;
     text-align: center;
-    background-image: linear-gradient(-180deg, #F0019E 0%, #FE0533 100%);
+    background: #C4D52F;
     border-radius: 3px;
     color: #fff;
   }

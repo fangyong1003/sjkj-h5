@@ -101,7 +101,7 @@ body {
   line-height: 50px;
   font-size: 17px;
   text-align: center;
-  color: #f00;
+  color:#C4D52F;
   background: #fff;
 }
 </style>

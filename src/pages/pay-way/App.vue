@@ -2,7 +2,7 @@
   <div class="pay-way">
       <div class="pay-way__timer">
             <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
-            <div v-if="this.payType == 1" class="payMoney">￥{{payData.needCreditsString}}</div>
+            <div v-if="this.payType == 1" class="payMoney"> {{payData.needCreditsString}}</div>
             <div v-if="this.payType == 2" class="payMoney">￥{{payData.needBalanceString}}</div>
       </div>
       <template v-if="payData.type == 0">
@@ -18,7 +18,7 @@
           <i  class="icon-check" :class="{'icon-check-active': isChoosew}"  @click="chooseGoodsw()"></i>
         </div>
         <div v-if="this.payType == 1" class="pay-way__do" @click="handleDianshiPay">
-            使用<span>食间豆支付</span>￥：<span class="paymoney">{{ payData.needCreditsString}}</span>
+            使用<span>食间豆支付</span> ：<span class="paymoney">{{ payData.needCreditsString}}</span>
         </div>
         <div v-if="this.payType == 2"  class="pay-way__do"  @click="handleWeixinPay">
             使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needBalanceString}}</span>
