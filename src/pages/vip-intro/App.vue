@@ -4,7 +4,7 @@
       <van-cell v-for="item in levels">
         <div class="levels" :class="item.levelInnerCode"></div>
         <dl>
-          <dd :class="{'active': item.levelInnerCode === currentLevelInnerCode }">{{item.levelName}}<span v-if="item.levelInnerCode === currentLevelInnerCode">（当前我是VIP会员）</span></dd>
+          <dd :class="{'active': item.levelInnerCode === currentLevelInnerCode }">{{item.levelName}}<span v-if="item.levelInnerCode === currentLevelInnerCode">（当前我是{{currentLevelInnerCode}}会员）</span></dd>
           <dd class="intro">升级条件：<p>{{item.levelRuleText}}</p></dd>
           <dd class="intro">会员权益：
             <ul>
