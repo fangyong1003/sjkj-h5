@@ -1,7 +1,7 @@
 import ajax, { addMiddlewares } from './axios';
 
 addMiddlewares((url) => {
-  let prefix = '/yzjz-web';
+  let prefix = '/sjkj-web';
 
   if (process.env.NODE_ENV === 'development') {
     // if (/v1/.test(url)) prefix = '/yzjz-console-server';

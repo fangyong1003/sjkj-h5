@@ -13,8 +13,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/yzjz-web': 'http://120.55.46.201',
-      '/yzjz-console-server': 'http://47.96.84.26'
+      '/sjkj-web': 'http://120.55.46.201',
+      '/sjkj-console-server': 'http://47.96.84.26'
     },
 
     // Various Dev Server settings

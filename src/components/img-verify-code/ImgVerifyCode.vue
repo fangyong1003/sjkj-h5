@@ -38,7 +38,7 @@ export default {
       this.$emit('input', event.target.value);
     },
     getImgVerifyCode() {
-      this.imgVerifyCode = '/yzjz-web/api/img_check_code?clientType=4&deviceId=1&t=' + new Date().getTime();
+      this.imgVerifyCode = '/sjkj-web/api/img_check_code?clientType=4&deviceId=1&t=' + new Date().getTime();
       // api.getImgVerifyCode()
       //   .then((res) => {
       //     console.log(res)
