@@ -163,6 +163,7 @@
         margin-left:15px;
         img{
          width:44px;
+         border-radius:100px;
         }
       }
       .user-center__vips{

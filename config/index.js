@@ -13,7 +13,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/sjkj-web': 'http://120.55.46.201',
+      '/sjkj-web': 'http://h5.sjkj8.com',
       '/sjkj-console-server': 'http://47.96.84.26'
     },
 

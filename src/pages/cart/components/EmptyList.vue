@@ -50,7 +50,7 @@ export default {
     .tit{
       line-height:40px;
       padding-left:15px;
-      text-align:center;
+      text-align:left;
       background:#fff;
     }
     h2 {
