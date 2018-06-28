@@ -123,7 +123,6 @@ export default {
   .vip-center {
     &_levels {
       padding: 24px 0 14px 0;
-      background-size: 375px 250px;
       background-position: center -43px;
       background-repeat: no-repeat;
       .logo {
@@ -134,25 +133,25 @@ export default {
         background-repeat: no-repeat;
       }
       &.V1 {
-        background-image: url('./images/v1.png');
+        background-image: url('./images/property_bg.png');
         .logo {
           background-image: url('./images/level1.png');
         }
       }
       &.V2 {
-        background-image: url('./images/v2.png');
+        background-image: url('./images/property_bg.png');
         .logo {
           background-image: url('./images/level2.png');
         }
       }
       &.V3 {
-        background-image: url('./images/v3.png');
+        background-image: url('./images/property_bg.png');
         .logo {
           background-image: url('./images/level3.png');
         }
       }
       &.V4 {
-        background-image: url('./images/v4.png');
+        background-image: url('./images/property_bg.png');
         .logo {
           background-image: url('./images/level4.png');
         }

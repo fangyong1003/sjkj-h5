@@ -2,17 +2,21 @@
   <div class="my-assets-jzb-balance">
     <div class="withTitle">提现金额</div>
     <div class="my-assets-jzb-balance_input" >
-      <van-field
-        v-model="withdraw"
-        label="¥"
-        placeholder=""
-      />
+
+      <div class="van-cell van-field van-hairline">
+          <div class="van-cell__title">
+            <img src="./images/yuanbao.png" style="width:20px">
+          </div>
+          <div class="van-cell__value">
+              <input type="text" v-model="withdraw" class="van-field__control">
+          </div>
+        </div>
     </div>
     <div class="balance">
       <span>可提现{{amount}}</span>
       <span class="allIn" @click="allWitch">全部提现</span>
     </div>
-    <jz-button class="action-button-done" @click.prevent.stop.native="goSubmit" >确认转换</jz-button>
+    <jz-button class="action-button-done" @click.prevent.stop.native="goSubmit" >预计几小时到账，确认提现</jz-button>
   </div>
 </template>
 <script>
@@ -100,13 +104,14 @@
   }
   .action-button-done {
     display: block;
-    margin: 40px auto 0 auto;
-    width: 270px;
+    margin-top: 40px;
+    width: 90%;
+    margin-left:5%;
     height: 40px;
     line-height: 40px;
     color: #fff;
-    background: rgba(52,44,42,0.60);
-    border-radius: 100px;
+    background: #333;
+    border-radius: 5px;
   }
   .balance{
     padding : 0 15px;

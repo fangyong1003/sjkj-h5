@@ -149,7 +149,7 @@ export default {
         Toast('请选择地址');
         return;
       }
-
+      console.log(1111);
       this.showOrderLoading = true;
       const orderData = this.order.reduce((result, item) => {
         return result.concat(item.orderData);

@@ -147,7 +147,7 @@
   }
   .vip-center {
     &_levels {
-      padding: 24px 0;
+      padding: 35px 0;
       background-image: linear-gradient(-135deg, #342C2A 0%, #504E4D 100%);
       dl{
        display:inline-block;

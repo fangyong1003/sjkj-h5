@@ -73,7 +73,7 @@ body {
   background-image:url(./images/property_bg.png);
   background-size:100%;
   background-repeat:no-repeat;
-  padding:40px 15px 35px 15px;
+  padding:50px 15px 45px 15px;
   color:#fff;
   text-align:center;
 }
