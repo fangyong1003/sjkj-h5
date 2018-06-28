@@ -182,6 +182,9 @@
             goods.price = `余额${goods.paidBalanceString}`;
             goods.ruleText = `+食间豆${goods.paidCreditsString}`;
             break;
+          case PAYMENT_TYPE.CASH_ONLY:
+            price = `￥${goods.paidCashString}`;
+            break;
         }
 
         return goods;

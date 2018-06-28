@@ -127,6 +127,9 @@ export default {
             detail.price = `余额${detail.paidBalanceString}`;
             detail.ruleText = `+食间豆${detail.paidCreditsString}`;
             break;
+          case PAYMENT_TYPE.CASH_ONLY:
+            price = `￥${detail.paidCashString}`;
+            break;
         }
         return detail;
       });

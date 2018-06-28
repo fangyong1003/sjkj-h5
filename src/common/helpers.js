@@ -102,6 +102,9 @@ export const getPaidString = (order) => {
     case PAYMENT_TYPE.BALANCE_CREDIT:
       price = `余额${order.paidBalanceString} +食间豆${order.paidCreditsString}`;
       break;
+    case PAYMENT_TYPE.CASH_ONLY:
+      price = `￥${order.paidCashString}`;
+      break;
   }
   return price;
 };
@@ -123,6 +126,9 @@ export const getOrderPaidString = (order) => {
       break;
     case PAYMENT_TYPE.BALANCE_CREDIT:
       price = `余额${order.orderPaidBalanceString || order.paidBalanceString} +食间豆${order.orderPaidCreditsString || order.paidCreditsString}`;
+      break;
+    case PAYMENT_TYPE.CASH_ONLY:
+      price = `￥${order.paidCashString}`;
       break;
   }
   return price;
@@ -166,6 +172,7 @@ export const getOrderTotal = (orderData) => {
       }
 
       const values = getSellRuleSubValues(sellPriceRule);
+      console.log(sellPriceRule);
       if (values.length) {
         values.forEach((ruleValue, index) => {
           const currentValue = result.subValues[index];

@@ -73,7 +73,7 @@ export default {
             diamondYuan
           }
         }]]);
-      }
+      } 
       return total;
     },
     price() {
