@@ -4,7 +4,9 @@
     <van-cell title="商品总价">
       <total-price class="order-price-info__total" :total-data="orderTotalData" />
     </van-cell>
+    <template v-if="orderTotalData.type == 0">
     <dou-price class="dou__price" :total-data="orderTotalData"/>
+    </template>
     <van-cell title="商品实付">
       <total-price class="order-price-info__dou" :total-data="orderTotalData" />
     </van-cell>
@@ -76,12 +78,12 @@
   }
 
   &__price-symbol {
-    color: #f00;
+    color: #C4D52F;
     font-size: 14px;
   }
 
   &__price-value {
-    color: #f00;
+    color: #C4D52F;
     font-size: 20px;
   }
 

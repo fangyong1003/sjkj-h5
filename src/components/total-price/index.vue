@@ -33,9 +33,9 @@ export default {
 
 <style>
 .price-num {
-  color: #f00;
+  color: #C4D52F;
   line-height: 24px;
-  font-size: 13px;
+  font-size: 17px;
   display:inherit;
   > span {
     font-size: 17px;

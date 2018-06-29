@@ -8,14 +8,14 @@
         {{ goodsInfo.title }}
       </h3>
       <div class="tagbox">
-        <div v-if="showTags" class="goods-list__tags">
+        <div  class="goods-list__tags">
           <span v-for="(tag, index) in tags"
             :key="index"
             :class="['goods-list__tag', `goods-list__tag--${index}`]">{{ tag }}</span>
         </div>
       </div>
       <div class="goods-list__buy">
-          <span v-if="goodsInfo.price.sales">{{goodsInfo.price.sales}}人已买</span>
+          <span >{{goodsInfo.sales}}人已买</span>
       </div>
       <template v-if="onlyCredit && goodsInfo.price.diamondPriceYuan">
         <p class="goods-list__price">
@@ -24,14 +24,14 @@
         </p>
       </template>
       <template v-else>
-        <p class="goods-list__price">
+        <span class="goods-list__price">
           <span class="goods-list__price-symbol">¥</span>
           <span class="goods-list__price-number">{{ goodsInfo.price.sellPrice | cent2yuan }}</span>
-        </p>
-        <p v-if="showOrigin" class="goods-list__origin-price">
+        </span>
+        <span  class="goods-list__origin-price">
           <span class="goods-list__origin-price-symbol">¥</span>
-          <span class="goods-list__origin-price-number">{{ goodsInfo.price.originPrice | cent2yuan }}</span>
-        </p>
+          <span class="goods-list__origin-price-number">{{ goodsInfo.price.originPriceYuan | cent2yuan }}</span>
+        </span>
       </template>
     </div>
   </a>
@@ -136,6 +136,7 @@ export default {
     font-size: 13px;
     color: #6B6B6B;
     height:20px;
+    line-height:20px;
     margin-bottom: 5px;
   }
   &__tags {
@@ -165,7 +166,7 @@ export default {
   }
 
   &__price {
-    display: inline-block;
+    display: inline-block !important;
     color: #342C2A;
     font-family: PingFangSC-Medium;
     font-size:16px;

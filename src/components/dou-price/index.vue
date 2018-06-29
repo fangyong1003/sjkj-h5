@@ -37,7 +37,7 @@ export default {
   margin-right:5px;
 }
 .price-num {
-  color: #f00;
+  color: #342C2A;
   line-height: 24px;
   font-size: 13px;
   display:inherit;
