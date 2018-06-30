@@ -12,21 +12,28 @@ import { goToPage } from '@/common/helpers';
 import YZLocalStorage from '@/common/utils/local_storage';
 
 const { wx } = wxActions;
-function onBridgeReady(obj,orderIds,needCashString){
+function onBridgeReady(obj,orderIds,needCashString,returnedCreditsString){
      WeixinJSBridge.invoke(
          'getBrandWCPayRequest',obj,
          function(res){
-             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-               goToPage('paid', {
-                 orderIds: orderIds,
-                 payCredits: needCashString,
-                 status: 1
-               });
-             }
+           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                goToPage('paid', {
+                  orderIds: orderIds,
+                  payCredits: needCashString,
+                  returnedCredits: returnedCreditsString,
+                  status: 1
+                });
+            } else {
+                goToPage('paid', {
+                  orderIds: orderIds,
+                  payCredits: needCashString,
+                  status: 3
+                });
+            }
          }
      );
     }
-export const initPayConfig = (orderIds,needCashString) =>{
+export const initPayConfig = (orderIds,needCashString,returnedCreditsString) =>{
     const idArr = JSON.stringify(orderIds.split(','));
     ajax.post('/api/payment/apply/h5', {
       data: idArr
@@ -50,7 +57,7 @@ export const initPayConfig = (orderIds,needCashString) =>{
                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
            }
         }else{
-            onBridgeReady(configs,orderIds,needCashString);
+            onBridgeReady(configs,orderIds,needCashString,returnedCreditsString);
         }
       }).catch((err) => {
         throw err;

@@ -1,14 +1,17 @@
 <template>
   <div class="paid-status">
     <img class="paid-status__success-icon" src="../images/paid-success.png">
-    <p class="paid-status__pay-text">订单支付成功！</p>
-    <p v-if="orderData.payCredits" class="paid-status__pay-result">
+    <p class="paid-status__pay-text">
+      <span v-if="orderData.status == 3">支付处理中，请稍后查询！</span>
+      <span v-if="orderData.status == 0 || orderData.status == 1">订单支付成功！</span>
+    </p>
+    <p v-if="orderData.payCredits && orderData.status != 3" class="paid-status__pay-result">
       您消费了<span class="paid-status__result-num">{{ orderData.payCredits }}</span>
       <span v-if="orderData.status == 0">食间豆</span>
       <span v-if="orderData.status == 1">元</span>
     </p>
     <p v-if="orderData.returnedCredits && orderData.returnedCredits > 0" class="paid-status__pay-result">
-      您有<span class="paid-status__result-num">{{ orderData.returnedCredits }}</span>个食间豆到账
+      您获得了<span class="paid-status__result-num">{{ orderData.returnedCredits }}</span>个食间豆
     </p>
   </div>
 </template>
