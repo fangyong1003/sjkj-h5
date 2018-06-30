@@ -4,7 +4,7 @@
             <div class="remainTimer">支付剩余时间 {{countdownText}}</div>
             <template v-if="payData.type == 0">
               <div v-if="this.payType == 1" class="payMoney"> {{payData.needCreditsString}}</div>
-              <div v-if="this.payType == 2" class="payMoney">￥{{payData.needBalanceString}}</div>
+              <div v-if="this.payType == 2" class="payMoney">￥{{payData.needCashString}}</div>
             </template>
             <template v-if="payData.type == 7">
               <div  class="payMoney">￥{{payData.needCashString}}</div>
@@ -26,7 +26,7 @@
             使用<span>食间豆支付</span> ：<span class="paymoney">{{ payData.needCreditsString}}</span>
         </div>
         <div v-if="this.payType == 2"  class="pay-way__do"  @click="handleWeixinPay">
-            使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needBalanceString}}</span>
+            使用<span>微信支付</span>￥：<span class="paymoney">{{payData.needCashString}}</span>
         </div>
       </template>
       <template v-if="payData.type == 7">
