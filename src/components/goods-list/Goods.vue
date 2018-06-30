@@ -30,7 +30,7 @@
         </span>
         <span  class="goods-list__origin-price">
           <span class="goods-list__origin-price-symbol">¥</span>
-          <span class="goods-list__origin-price-number">{{ goodsInfo.price.originPriceYuan | cent2yuan }}</span>
+          <span class="goods-list__origin-price-number">{{ goodsInfo.price.originPrice | cent2yuan }}</span>
         </span>
       </template>
     </div>
