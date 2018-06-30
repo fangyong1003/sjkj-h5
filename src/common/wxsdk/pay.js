@@ -19,8 +19,8 @@ function onBridgeReady(obj,orderIds,needBalanceString){
              if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                goToPage('paid', {
                  orderIds: orderIds,
-                 payCredits:needBalanceString,
-                 status:1
+                 payCredits: needCashString,
+                 status: 1
                });
              }
          }
