@@ -21,7 +21,7 @@ export default {
     const returnedCredits = Args.get('returnedCreditsString');
     const returnedProperty = Args.get('returnedPropertyString');
     const payCredits = Args.get('payCredits');
-    const status = Args.get('status').split(',');
+    const status = Args.get('status');
     return {
       order: {
         orderIds,
