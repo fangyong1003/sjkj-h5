@@ -132,7 +132,7 @@ export default {
       const diamond = this.orderTotalData.totalDiamond;
       let desc = `购买可获得${diamond}食间豆`;
       if (this.orderTotalData.ruleType === 0 && +diamond > 0) {
-        desc = `现金或余额支付可获得${diamond}食间豆`;
+        desc = `现金支付可获得${diamond}食间豆`;
       }
       return desc;
     }

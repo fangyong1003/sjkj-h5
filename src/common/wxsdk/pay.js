@@ -12,7 +12,7 @@ import { goToPage } from '@/common/helpers';
 import YZLocalStorage from '@/common/utils/local_storage';
 
 const { wx } = wxActions;
-function onBridgeReady(obj,orderIds,needBalanceString){
+function onBridgeReady(obj,orderIds,needCashString){
      WeixinJSBridge.invoke(
          'getBrandWCPayRequest',obj,
          function(res){
@@ -26,7 +26,7 @@ function onBridgeReady(obj,orderIds,needBalanceString){
          }
      );
     }
-export const initPayConfig = (orderIds,needBalanceString) =>{
+export const initPayConfig = (orderIds,needCashString) =>{
     const idArr = JSON.stringify(orderIds.split(','));
     ajax.post('/api/payment/apply/h5', {
       data: idArr
@@ -50,7 +50,7 @@ export const initPayConfig = (orderIds,needBalanceString) =>{
                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
            }
         }else{
-            onBridgeReady(configs,orderIds,needBalanceString);
+            onBridgeReady(configs,orderIds,needCashString);
         }
       }).catch((err) => {
         throw err;

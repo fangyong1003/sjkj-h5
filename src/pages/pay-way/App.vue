@@ -74,7 +74,7 @@ export default {
 
   methods: {
     handleWeixinPay() {
-      initPayConfig(this.ids,this.payData.needBalanceString)
+      initPayConfig(this.ids,this.payData.needCashString)
     },
     handleDianshiPay() {
       api.pay('dianshi').then(() => {

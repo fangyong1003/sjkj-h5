@@ -79,7 +79,7 @@ export default {
         // const diamond = this.data.goodsCreditsString;
         // let desc = `购买可获得${diamond}食间豆`;
         // if (this.data.sellType === 0 && +diamond > 0) {
-        //   desc = `现金或余额支付可获得${diamond}食间豆`;
+        //   desc = `现金支付可获得${diamond}食间豆`;
         // } else if (!diamond) {
         //   desc = '';
         // }
@@ -91,7 +91,7 @@ export default {
       const diamond = this.totalData.totalDiamond;
       let desc = `购买可获得${diamond}食间豆`;
       if (this.totalData.ruleType === 0 && +diamond > 0) {
-        desc = `现金或余额支付可获得${diamond}食间豆`;
+        desc = `现金支付可获得${diamond}食间豆`;
       }
       return desc;
     }
