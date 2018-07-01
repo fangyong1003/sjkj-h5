@@ -8,7 +8,7 @@
         {{ goodsInfo.title }}
       </h3>
       <div class="tagbox">
-        <div  class="goods-list__tags">
+        <div v-if="showTags"  class="goods-list__tags">
           <span v-for="(tag, index) in tags"
             :key="index"
             :class="['goods-list__tag', `goods-list__tag--${index}`]">{{ tag }}</span>
@@ -28,7 +28,7 @@
           <span class="goods-list__price-symbol">¥</span>
           <span class="goods-list__price-number">{{ goodsInfo.price.sellPrice | cent2yuan }}</span>
         </span>
-        <span  class="goods-list__origin-price">
+        <span v-if="this.showOrigin"  class="goods-list__origin-price">
           <span class="goods-list__origin-price-symbol">¥</span>
           <span class="goods-list__origin-price-number">{{ goodsInfo.price.originPrice | cent2yuan }}</span>
         </span>

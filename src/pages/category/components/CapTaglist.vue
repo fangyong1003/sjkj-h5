@@ -12,6 +12,8 @@
       :list="goodsList"
       v-waterfall-lower="fetchGoods"
       :waterfall-disabled="waterfallDisabled"
+      showOrigin
+      showTags
     />
   </div>
 </template>
