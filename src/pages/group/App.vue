@@ -20,6 +20,7 @@
 
 <script>
 import { Toast, Waterfall, Loading } from 'vant';
+import { goToPage } from '@/common/helpers';
 import GoodsList from '@/components/goods-list';
 import Args from '@/common/utils/args';
 import api from './api';
@@ -65,7 +66,6 @@ export default {
           [this.type]: this.id
         };
       }
-
       return args;
     }
   },
@@ -77,7 +77,7 @@ export default {
       }
 
       this.status = 'loading';
-
+      let _this = this;
       api.getGroups({
         pageNo: this.pageNo,
         type: this.type,
@@ -86,6 +86,12 @@ export default {
         const { data, total } = res.result;
         if (data.length + this.goodsList.length >= total) {
           this.status = 'finished';
+          if(data.length + this.goodsList.length == 1){
+              goToPage('goods', {
+                id: data[0].id,
+                ...this.extraArgs
+              });
+          }
         } else {
           this.status = '';
           this.pageNo++;
@@ -95,6 +101,7 @@ export default {
         Toast(err);
         this.status = '';
       });
+
     }
   },
 
@@ -106,7 +113,7 @@ export default {
       document.title = '活动商品';
     }
     if (this.onlyCredit) {
-      document.title = '点石金专场';
+      document.title = '食间豆专场';
     }
     this.fetchGoods();
   }

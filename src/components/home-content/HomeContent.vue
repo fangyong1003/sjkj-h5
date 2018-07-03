@@ -23,10 +23,8 @@
       <div class="home-content__recommend-group">
         <img class="home-content__recommend-image"
           :src="recommend.exhibition.mainPhoto"
-          @click="goToExhibition(recommend.exhibition)">
-        <goods-list class="home-content__recommend-goods"
-          :layout="3"
-          :list="recommend.items"></goods-list>
+          @click="goToExhibition(recommend)">
+      <!--  <goods-list class="home-content__recommend-goods"  :layout="3"  :list="recommend.items"></goods-list>-->
       </div>
     </template>
   </section>
@@ -117,11 +115,18 @@ export default {
           break;
       }
     },
-    goToExhibition(exhibition) {
-      goToPage('group', {
-        type: 'exhibitionId',
-        id: exhibition.id
-      });
+    goToExhibition(recommend) {
+      if(recommend.items.length == 1){
+            goToPage('goods', {
+              id: recommend.items[0].id,
+              exhibitionId:recommend.exhibition.id
+            });
+      }else{
+          goToPage('group', {
+            type: 'exhibitionId',
+            id: recommend.exhibition.id
+          });
+      }
     }
   }
 };
