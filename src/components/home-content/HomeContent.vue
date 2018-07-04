@@ -168,7 +168,9 @@ export default {
       }
     }
   }
-
+  &__recommend-group{
+    padding:10px;
+  }
   &__recommend-banner {
     line-height: 40px;
     background: #f7f7f7;
